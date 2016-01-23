@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         CameraDistance = 30f;
+        CameraDirection = CameraDirection.North;
     }
 
     void Update()
