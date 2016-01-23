@@ -23,18 +23,39 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        CameraDistance = 5f;
+        CameraDistance = 30f;
     }
 
     void Update()
     {
-
+        transform.position = (CameraDirectionToRayVector(CameraDirection) * CameraDistance) + player.transform.position;
+        transform.LookAt(player.transform);
         Debug.DrawRay((CameraDirectionToRayVector(CameraDirection) * CameraDistance) + player.transform.position, new Vector3(0, 1, 0), Color.red);
 
-        Debug.DrawRay(player.transform.position, CameraDirectionToRayVector(CameraDirection.North), Color.red);
-        Debug.DrawRay(player.transform.position, CameraDirectionToRayVector(CameraDirection.East), Color.green);
-        Debug.DrawRay(player.transform.position, CameraDirectionToRayVector(CameraDirection.South), Color.blue);
-        Debug.DrawRay(player.transform.position, CameraDirectionToRayVector(CameraDirection.West), Color.yellow);
+        if (Input.GetKeyDown(KeyCode.E))
+            CameraDirection = SwitchCameraDirection(CameraDirection, true);
+        else if (Input.GetKeyDown(KeyCode.Q))
+            CameraDirection = SwitchCameraDirection(CameraDirection, false);
+
+        DebugController.Instance.LogLine(string.Format("CAM DIRECTION: {0}", CameraDirection.ToString()));
+        DebugController.Instance.LogLine(string.Format("CAM DISTANCE: {0}", CameraDistance));
+    }
+
+    private CameraDirection SwitchCameraDirection(CameraDirection cameraDirection, bool clockwise)
+    {
+        switch (cameraDirection)
+        {
+            case CameraDirection.North:
+                return clockwise ? CameraDirection.East : CameraDirection.West;
+            case CameraDirection.East:
+                return clockwise ? CameraDirection.South : CameraDirection.North;
+            case CameraDirection.South:
+                return clockwise ? CameraDirection.West : CameraDirection.East;
+            case CameraDirection.West:
+                return clockwise ? CameraDirection.North : CameraDirection.South;
+            default:
+                throw new System.Exception("swich cam direction fail");
+        }
     }
 
     private Vector3 CameraDirectionToRayVector(CameraDirection cameraDirection)
