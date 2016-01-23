@@ -20,6 +20,9 @@ public class FireController : MonoBehaviour
         {
             cooldown = 0;
 
+            CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
+            CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
+
             List<Tuple<Vector3, Vector3>> points = CalculateFirePoints();
             CalculateEnemyHits(points);
         }

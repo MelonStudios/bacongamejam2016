@@ -2,8 +2,13 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(VisualEffectController))]
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance { get; private set; }
+
+    public VisualEffectController VisualEffectController { get; private set; }
+
     private CameraDirection _cameraDirection;
     private const float cameraPhysicalDistance = 30;
 
@@ -33,6 +38,8 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
+        VisualEffectController = GetComponent<VisualEffectController>();
         player = GameObject.FindGameObjectWithTag("Player");
         CameraDirection = CameraDirection.North;
         StartCoroutine(CameraDistanceController());
