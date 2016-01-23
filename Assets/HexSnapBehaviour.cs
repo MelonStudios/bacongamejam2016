@@ -34,7 +34,7 @@ public class HexSnapBehaviour : MonoBehaviour
             x = (flatFloor * hexFlat * XOffSet) + hexFlatHalf;
         }
 
-        y = transform.position.y * YOffSet;
+        y = Mathf.Floor(transform.position.y) * YOffSet;
         z = pointFloor * (hexPointHalf + hexPointQuart) * ZOffSet;
 
         transform.position = new Vector3(x, y, z);
