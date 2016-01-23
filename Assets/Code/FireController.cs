@@ -11,12 +11,21 @@ public class FireController : MonoBehaviour
     public int BounceLimit;
 
     private float cooldown;
+    
+    LineRenderer linerenderer;
+    private float lineWidth = 0;
+
+    void Start()
+    {
+        linerenderer = GetComponent<LineRenderer>();
+        linerenderer.SetVertexCount(BounceLimit);
+    }
 
     void Update()
     {
         cooldown += Time.deltaTime;
 
-        if (Input.GetMouseButton(0) && cooldown > FireCooldown)
+        if (Input.GetButtonDown("Fire1") && cooldown > FireCooldown)
         {
             cooldown = 0;
 
@@ -25,7 +34,20 @@ public class FireController : MonoBehaviour
 
             List<Tuple<Vector3, Vector3>> points = CalculateFirePoints();
             CalculateEnemyHits(points);
+            AnimateShot(points);
         }
+       
+        if (lineWidth > 0)
+        {
+            lineWidth -= 0.1f;
+            linerenderer.SetWidth(lineWidth, lineWidth);
+        }
+        else
+        {
+            lineWidth = 0;
+            linerenderer.SetWidth(0, 0);
+        }
+        
     }
 
     /// <summary>
@@ -79,6 +101,15 @@ public class FireController : MonoBehaviour
         {
             if (points.Count > i + 1)
                 Debug.DrawLine(points[i].Item1, points[i + 1].Item1, Color.green);
+        }
+    }
+    private void AnimateShot(List<Tuple<Vector3, Vector3>> points)
+    {
+        lineWidth = 1f;
+        linerenderer.SetWidth(lineWidth, lineWidth);
+        for (int i = 0; i < points.Count; i++)
+        {
+            linerenderer.SetPosition(i, points[i].Item1);
         }
     }
 }
