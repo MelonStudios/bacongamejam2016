@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
