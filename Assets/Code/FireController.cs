@@ -9,13 +9,15 @@ public class FireController : MonoBehaviour
     public GameObject FirePoint;
     public float FireCooldown;
 
+    public int BounceLimit;
+
     private float cooldown;
 
     void Update()
     {
         cooldown += Time.deltaTime;
 
-        if (Input.GetMouseButton(0))//&& cooldown > FireCooldown)
+        if (Input.GetMouseButton(0) && cooldown > FireCooldown)
         {
             cooldown = 0;
 
@@ -40,6 +42,8 @@ public class FireController : MonoBehaviour
 
     private List<Tuple<Vector3, Vector3>> GetNextPointRecursivly(ref List<Tuple<Vector3, Vector3>> currentPoints)
     {
+        if (currentPoints.Count >= BounceLimit) return currentPoints;
+
         RaycastHit hit;
         if (Physics.Raycast(currentPoints.Last().Item1, currentPoints.Last().Item2, out hit, 1000, 1 << 12)) // HexWall 12
         {

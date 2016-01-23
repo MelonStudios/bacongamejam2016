@@ -475,6 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 141714}
+  FireCooldown: 0
+  BounceLimit: 20
 --- !u!120 &12007668
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -630,6 +632,10 @@ Prefab:
       propertyPath: FirePoint
       value: 
       objectReference: {fileID: 141714}
+    - target: {fileID: 0}
+      propertyPath: BounceLimit
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188434}
