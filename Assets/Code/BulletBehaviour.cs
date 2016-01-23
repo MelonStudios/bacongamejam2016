@@ -3,8 +3,6 @@
 [RequireComponent(typeof(Rigidbody))]
 public class BulletBehaviour : MonoBehaviour
 {
-
-
     public float BulletSpeed;
     public float RotateSpeed;
 
@@ -13,6 +11,7 @@ public class BulletBehaviour : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * BulletSpeed, ForceMode.VelocityChange);
+        GetComponent<Rigidbody>().AddRelativeTorque(Vector3.one * RotateSpeed);
     }
 
     void Update()

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Reset()
     {
-        Speed = 200f;
+        Speed = 500f;
     }
 
     void Start()
