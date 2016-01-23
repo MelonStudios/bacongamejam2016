@@ -56,7 +56,7 @@ public class FireController : MonoBehaviour
                 case HexType.Wall:
                     break;
                 case HexType.Mirror:
-                    nextPointHeading = Vector3.Reflect(transform.forward, hit.normal);
+                    nextPointHeading = Vector3.Reflect(currentPoints.Last().Item2, hit.normal);
                     break;
             }
 
