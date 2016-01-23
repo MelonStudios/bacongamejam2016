@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     private CameraDirection _cameraDirection;
+    private const float cameraPhysicalDistance = 30;
 
     public CameraDirection CameraDirection
     {
@@ -12,34 +15,38 @@ public class CameraController : MonoBehaviour
 
     private float _cameraDistance;
 
-    public float CameraDistance
-    {
-        get { return _cameraDistance; }
-        set { _cameraDistance = Mathf.Floor(value); }
-    }
+    [Range(0, 10)]
+    public float CameraDistanceLerpTime;
+
+    [Range(8, 30)]
+    public int TargetCameraDistance;
 
     private GameObject player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        CameraDistance = 30f;
+        TargetCameraDistance = 30;
         CameraDirection = CameraDirection.North;
+        StartCoroutine(CameraDistanceController());
     }
 
     void Update()
     {
-        transform.position = (CameraDirectionToRayVector(CameraDirection) * CameraDistance) + player.transform.position;
+        transform.position = (CameraDirectionToRayVector(CameraDirection) * cameraPhysicalDistance) + player.transform.position;
         transform.LookAt(player.transform);
-        Debug.DrawRay((CameraDirectionToRayVector(CameraDirection) * CameraDistance) + player.transform.position, new Vector3(0, 1, 0), Color.red);
 
         if (Input.GetKeyDown(KeyCode.E))
             CameraDirection = SwitchCameraDirection(CameraDirection, true);
         else if (Input.GetKeyDown(KeyCode.Q))
             CameraDirection = SwitchCameraDirection(CameraDirection, false);
 
+        if (Input.mouseScrollDelta != Vector2.zero)
+            TargetCameraDistance += Convert.ToInt32(Input.mouseScrollDelta.y);
+
+
         DebugController.Instance.LogLine(string.Format("CAM DIRECTION: {0}", CameraDirection.ToString()));
-        DebugController.Instance.LogLine(string.Format("CAM DISTANCE: {0}", CameraDistance));
+        DebugController.Instance.LogLine(string.Format("CAM TARGET DISTANCE: {0}", TargetCameraDistance));
     }
 
     private CameraDirection SwitchCameraDirection(CameraDirection cameraDirection, bool clockwise)
@@ -73,6 +80,35 @@ public class CameraController : MonoBehaviour
                 return new Vector3(-1, 1, 1);
             default:
                 throw new System.Exception("fail");
+        }
+    }
+
+    IEnumerator CameraDistanceController()
+    {
+        float tempStart = 0;
+        int tempTarget = 0;
+        float time = 0;
+
+        while (true)
+        {
+            if (tempTarget != TargetCameraDistance)
+            {
+                tempStart = GetComponent<Camera>().orthographicSize;
+                tempTarget = TargetCameraDistance;
+            }
+
+            if (!Mathf.Approximately(GetComponent<Camera>().orthographicSize, TargetCameraDistance))
+            {
+                GetComponent<Camera>().orthographicSize = Mathf.SmoothStep(tempStart, tempTarget, MathUtility.PercentageBetween(time, 0, CameraDistanceLerpTime, true));
+
+                time += Time.deltaTime;
+            }
+            else
+            {
+                time = 0;
+            }
+
+            yield return new WaitForEndOfFrame();
         }
     }
 }
