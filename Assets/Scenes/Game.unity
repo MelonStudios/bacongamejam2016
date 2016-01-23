@@ -728,6 +728,10 @@ Prefab:
       propertyPath: EmissionModule.rate.scalar
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6536496, guid: e808add9f326a3948b43a204099860fb, type: 2}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e808add9f326a3948b43a204099860fb, type: 2}
   m_IsPrefabParent: 0

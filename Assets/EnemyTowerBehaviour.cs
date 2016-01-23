@@ -76,6 +76,7 @@ public class EnemyTowerBehaviour : MonoBehaviour
     private bool CanFireOnPlayer()
     {
         RaycastHit hit;
+        Debug.DrawLine(TowerGun.transform.position, TowerGun.transform.position * 10, Color.red);
         Physics.Raycast(TowerGun.transform.position, TowerGun.transform.forward, out hit);
 
         return hit.collider != null && hit.collider.tag == "Player";
