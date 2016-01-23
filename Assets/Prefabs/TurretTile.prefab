@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463972}
   - 95: {fileID: 9591842}
+  - 64: {fileID: 6415450}
   m_Layer: 0
   m_Name: TurretBase
   m_TagString: Untagged
@@ -297,6 +298,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121238}
   m_Mesh: {fileID: 4300000, guid: 928a769570629b24aa059d3170025793, type: 3}
+--- !u!64 &6415450
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 127cb2edf5949d541ac52fec83a2f00c, type: 3}
 --- !u!95 &9557212
 Animator:
   serializedVersion: 3
@@ -375,9 +388,9 @@ Prefab:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: HexType
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 127cb2edf5949d541ac52fec83a2f00c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169424}
