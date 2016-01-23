@@ -13,14 +13,11 @@ public class BulletBehaviour : MonoBehaviour
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * BulletSpeed, ForceMode.VelocityChange);
         GetComponent<Rigidbody>().AddRelativeTorque(Vector3.one * RotateSpeed);
+
+        Destroy(gameObject, LifeTime);
     }
 
     void Update()
     {
-        LifeTime -= Time.deltaTime;
-        if (LifeTime < 0)
-        {
-            Destroy(gameObject);
-        }
     }
 }
