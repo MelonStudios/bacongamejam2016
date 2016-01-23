@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rigidbody;
     private CameraController cameraController;
+    public float speed = 200f;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-        rigidbody.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * 50f);
+        rigidbody.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * speed);
     }
 
     private Vector3 CalculateMovement(CameraDirection cameraDirection, float hoz, float vert)
@@ -29,9 +30,9 @@ public class PlayerController : MonoBehaviour
             case CameraDirection.East:
                 return new Vector3(hoz - vert, 0, vert + hoz);
             case CameraDirection.South:
-                return new Vector3(vert + hoz, 0, hoz + vert);
+                return new Vector3(-hoz - vert, 0, hoz - vert);
             case CameraDirection.West:
-                return new Vector3(vert + hoz, 0, vert - hoz);
+                return new Vector3(vert - hoz, 0, -vert - hoz);
             default:
                 throw new System.Exception("Bad Camera Direction");
         }
