@@ -12,21 +12,28 @@ public class CameraController : MonoBehaviour
         get { return _cameraDirection; }
         set { _cameraDirection = value; }
     }
-
-    private float _cameraDistance;
-
-    [Range(0, 10)]
+    
+    [Range(0, 2)]
     public float CameraDistanceLerpTime;
-
-    [Range(8, 30)]
+    
     public int TargetCameraDistance;
 
+    public int MinCameraDistance;
+    public int MaxCameraDistance;
+
     private GameObject player;
+
+    void Reset()
+    {
+        TargetCameraDistance = 20;
+        CameraDistanceLerpTime = 0.25f;
+        MinCameraDistance = 8;
+        MaxCameraDistance = 30;
+    }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        TargetCameraDistance = 30;
         CameraDirection = CameraDirection.North;
         StartCoroutine(CameraDistanceController());
     }
@@ -42,8 +49,9 @@ public class CameraController : MonoBehaviour
             CameraDirection = SwitchCameraDirection(CameraDirection, false);
 
         if (Input.mouseScrollDelta != Vector2.zero)
-            TargetCameraDistance += Convert.ToInt32(Input.mouseScrollDelta.y);
+            TargetCameraDistance -= Convert.ToInt32(Input.mouseScrollDelta.y);
 
+        TargetCameraDistance = Mathf.Clamp(TargetCameraDistance, MinCameraDistance, MaxCameraDistance);
 
         DebugController.Instance.LogLine(string.Format("CAM DIRECTION: {0}", CameraDirection.ToString()));
         DebugController.Instance.LogLine(string.Format("CAM TARGET DISTANCE: {0}", TargetCameraDistance));
