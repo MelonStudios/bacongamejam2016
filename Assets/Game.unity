@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac165c8ac465504ea7a7b7293483bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistanceLerpTime: 10
+  CameraDistanceLerpTime: 0.25
   TargetCameraDistance: 20
 --- !u!1001 &807345874
 Prefab:
@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf29dec436b9b469036efc31578fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 200
 --- !u!4 &930711787
 Transform:
   m_ObjectHideFlags: 0

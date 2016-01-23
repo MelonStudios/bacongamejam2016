@@ -4,13 +4,19 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    private Rigidbody rigid;
     private CameraController cameraController;
-    public float speed = 200f;
+
+    public float Speed;
+
+    void Reset()
+    {
+        Speed = 200f;
+    }
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
@@ -18,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-        rigidbody.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * speed);
+        rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * Speed);
     }
 
     private Vector3 CalculateMovement(CameraDirection cameraDirection, float hoz, float vert)
