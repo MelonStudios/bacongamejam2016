@@ -2017,6 +2017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraDistanceLerpTime: 0.25
   TargetCameraDistance: 20
+  MinCameraDistance: 8
+  MaxCameraDistance: 30
 --- !u!1001 &807345874
 Prefab:
   m_ObjectHideFlags: 0
@@ -2367,7 +2369,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.875, y: 3.4257812, z: 3.6171875}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1550809264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &1299137158
@@ -2525,6 +2528,66 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76e28d385e6f2e84f9c3446cb54709ae, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1550809261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1550809264}
+  - 33: {fileID: 1550809263}
+  - 64: {fileID: 1550809262}
+  - 114: {fileID: 1550809265}
+  m_Layer: 8
+  m_Name: PlayerLooktoMouseCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1550809262
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550809261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &1550809263
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550809261}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1550809264
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550809261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 1266275937}
+  m_RootOrder: 0
+--- !u!114 &1550809265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550809261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491debd1967d4824182363af79ed6414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1591695359 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 76e28d385e6f2e84f9c3446cb54709ae, type: 3}

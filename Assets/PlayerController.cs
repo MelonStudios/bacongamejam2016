@@ -25,6 +25,15 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
         rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * Speed);
+
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit mouseHit;
+
+        // PlayerLooktoMouseCollider = 8
+        if (Physics.Raycast(mouseRay, out mouseHit, 1000, 1 << 8))
+        {
+            transform.LookAt(new Vector3(mouseHit.point.x, transform.position.y, mouseHit.point.z));
+        }
     }
 
     private Vector3 CalculateMovement(CameraDirection cameraDirection, float hoz, float vert)

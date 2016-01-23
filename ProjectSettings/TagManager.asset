@@ -13,6 +13,7 @@ TagManager:
   - UI
   - 
   - 
+  - PlayerLooktoMouseCollider
   - 
   - 
   - 
@@ -36,7 +37,6 @@ TagManager:
   - 
   - 
   - 
-  - PlayerCameraRaycast
   m_SortingLayers:
   - name: Default
     uniqueID: 0
