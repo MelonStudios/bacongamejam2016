@@ -1,14 +1,18 @@
 fileFormatVersion: 2
-guid: a0b8e32c4edc5da41bf709f6071dfb6b
-timeCreated: 1453548836
+guid: 127cb2edf5949d541ac52fec83a2f00c
+timeCreated: 1453549722
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: group
+    100002: Hex
+    100004: //RootNode
+    400000: group
+    400002: Hex
+    400004: //RootNode
+    2300000: Hex
+    3300000: Hex
     4300000: Hex
     9500000: //RootNode
   materials:

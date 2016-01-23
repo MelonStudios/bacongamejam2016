@@ -1,15 +1,19 @@
 fileFormatVersion: 2
-guid: 530b1bd519656fc4d855f5fc1a589e3b
-timeCreated: 1453548836
+guid: 928a769570629b24aa059d3170025793
+timeCreated: 1453549724
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCylinder1
+    100000: pasted__group
+    100002: pasted__pasted__pCylinder1
+    100004: //RootNode
+    400000: pasted__group
+    400002: pasted__pasted__pCylinder1
+    400004: //RootNode
+    2300000: pasted__pasted__pCylinder1
+    3300000: pasted__pasted__pCylinder1
+    4300000: pasted__pasted__pCylinder1
     9500000: //RootNode
   materials:
     importMaterials: 1
