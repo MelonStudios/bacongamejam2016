@@ -15,7 +15,7 @@ public class FireController : MonoBehaviour
     {
         cooldown += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0) && cooldown > FireCooldown)
+        if (Input.GetMouseButton(0))//&& cooldown > FireCooldown)
         {
             cooldown = 0;
 
@@ -44,7 +44,7 @@ public class FireController : MonoBehaviour
         if (Physics.Raycast(currentPoints.Last().Item1, currentPoints.Last().Item2, out hit, 1000, 1 << 12)) // HexWall 12
         {
 
-            HexType hexType = hit.collider.GetComponentInChildren<HexTileInformation>().HexType;
+            HexType hexType = hit.collider.GetComponentInParent<HexTileInformation>().HexType;
             Vector3 nextPointHeading = Vector3.zero;
 
             switch (hexType)
@@ -69,9 +69,10 @@ public class FireController : MonoBehaviour
 
     private void CalculateEnemyHits(List<Tuple<Vector3, Vector3>> points)
     {
-        foreach (var pointDetails in points)
+        for (int i = 0; i < points.Count; i++)
         {
-            Debug.DrawRay(pointDetails.Item1, Vector3.up, Color.green, 5);
+            if (points.Count > i + 1)
+                Debug.DrawLine(points[i].Item1, points[i + 1].Item1, Color.green);
         }
     }
 }
