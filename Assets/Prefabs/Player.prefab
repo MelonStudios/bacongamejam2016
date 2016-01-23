@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 410240}
   - 95: {fileID: 9562020}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
