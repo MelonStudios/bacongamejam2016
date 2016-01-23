@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class BulletBehaviour : MonoBehaviour
 {
+    public float LifeTime;
     public float BulletSpeed;
     public float RotateSpeed;
 
@@ -16,5 +17,10 @@ public class BulletBehaviour : MonoBehaviour
 
     void Update()
     {
+        LifeTime -= Time.deltaTime;
+        if (LifeTime < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
