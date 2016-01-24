@@ -1,38 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainMenuController : MonoBehaviour {
-
+public class MainMenuController : MonoBehaviour
+{
     public TextMesh newGame;
     public TextMesh levelSelect;
     public TextMesh quit;
 
     public TextMesh backButton;
-    public TextMesh level1, level2, level3;
+    public TextMesh level1, level2, level3, level4;
 
     public Transform mainMenuPoint;
     public Transform levelSelectPoint;
 
-    private Transform goalPoint;
+    public float CameraAnimationTime;
 
     private string currentlySelected;
 
+    public bool animating;
+
     void Start()
     {
-        goalPoint = mainMenuPoint;
+        animating = false;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
+        if (animating) return;
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        newGame.color = levelSelect.color = quit.color = backButton.color = level1.color = level2.color = level3.color = Color.magenta;
+        newGame.color = levelSelect.color = quit.color = backButton.color = level1.color = level2.color = level3.color = level4.color = Color.magenta;
         currentlySelected = "none";
 
-        Camera.main.transform.position = goalPoint.position;
-
-        if(Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             switch (hit.collider.gameObject.name)
             {
@@ -64,23 +67,27 @@ public class MainMenuController : MonoBehaviour {
                     level3.color = Color.white;
                     currentlySelected = "level3";
                     break;
+                case "Level4Tile":
+                    level4.color = Color.white;
+                    currentlySelected = "level4";
+                    break;
                 default:
                     break;
             }
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            switch(currentlySelected)
+            switch (currentlySelected)
             {
                 case "newGame":
                     Application.LoadLevel(1);
                     break;
                 case "levelSelect":
-                    goalPoint = levelSelectPoint;
+                    StartCoroutine(AnimateCameraToPoint(levelSelectPoint));
                     break;
                 case "back":
-                    goalPoint = mainMenuPoint;
+                    StartCoroutine(AnimateCameraToPoint(mainMenuPoint));
                     break;
                 case "level1":
                     Application.LoadLevel(1);
@@ -91,6 +98,9 @@ public class MainMenuController : MonoBehaviour {
                 case "level3":
                     Application.LoadLevel(3);
                     break;
+                case "level4":
+                    Application.LoadLevel(4);
+                    break;
                 case "quitGame":
                     Application.Quit();
                     break;
@@ -98,5 +108,30 @@ public class MainMenuController : MonoBehaviour {
                     break;
             }
         }
-	}
+    }
+
+    IEnumerator AnimateCameraToPoint(Transform goalPoint)
+    {
+        animating = true;
+
+        Camera cam = Camera.main;
+        Vector3 originalPosition = cam.transform.position;
+        Quaternion originalRotation = cam.transform.rotation;
+        Vector3 targetPosition = goalPoint.position;
+        Quaternion targetRotation = goalPoint.rotation;
+
+        float deltaTime = 0;
+
+        do
+        {
+            deltaTime += Time.deltaTime;
+            
+            cam.transform.position = Vector3.Slerp(originalPosition, targetPosition, MathUtility.PercentageBetween(deltaTime, 0, CameraAnimationTime));
+            //cam.transform.rotation = Quaternion.Slerp(originalRotation, targetRotation, MathUtility.PercentageBetween(deltaTime, 0, CameraAnimationTime));
+
+            yield return new WaitForEndOfFrame();
+        } while (deltaTime <= CameraAnimationTime);
+
+        animating = false;
+    }
 }
