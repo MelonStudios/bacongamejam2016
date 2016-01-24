@@ -11,6 +11,11 @@ public class FireController : MonoBehaviour
 
     public int BounceLimit;
 
+    public AudioClip[] FireSounds;
+    public AudioClip[] EnemyDeathSounds;
+    public AudioClip[] ReflectionSounds;
+    public AudioClip[] WallSounds;
+
     private float cooldown;
     
     private PlayerInformation playerInformtion;
@@ -51,6 +56,39 @@ public class FireController : MonoBehaviour
 
                 FireResults points = CalculateFirePoints();
                 ScoreController.Instance.CalculateFireScore(points);
+
+                foreach (var point in points)
+                {
+                    foreach (var enemy in point.HitEnemies)
+                    {
+                        enemy.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
+                        Camera.main.GetComponent<AudioSource>().PlayOneShot(EnemyDeathSounds[UnityEngine.Random.Range(0, EnemyDeathSounds.Length - 1)]);
+                    }
+
+                    switch (point.EndingHexType)
+                    {
+                        case HexType.Wall:
+                            foreach (var wallSound in WallSounds)
+                            {
+                                Camera.main.GetComponent<AudioSource>().PlayOneShot(wallSound);
+                            }
+                            break;
+                        case HexType.Mirror:
+                            foreach (var reflSound in ReflectionSounds)
+                            {
+                                Camera.main.GetComponent<AudioSource>().PlayOneShot(reflSound);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+                foreach (var audioClip in FireSounds)
+                {
+                    Camera.main.GetComponent<AudioSource>().PlayOneShot(audioClip);
+                }
 
                 CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
                 CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);

@@ -106,15 +106,6 @@ public class ScoreController : MonoBehaviour
         Debug.LogWarning("Final score shot calc: " + tempScore);
         Score += tempScore;
 
-        Debug.LogWarning("KILLING ALL ENEMIES IN SHOT");
-        foreach (var result in fireResults)
-        {
-            foreach (var enemy in result.HitEnemies)
-            {
-                enemy.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
-            }
-        }
-
         GameInformation.Instance.PlayerInformation.GetComponent<FireController>().AnimateShot(fireResults);
     }
 

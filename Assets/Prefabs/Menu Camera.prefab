@@ -1,46 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &133036
+--- !u!1 &110958
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 466448}
-  - 20: {fileID: 2026856}
-  - 92: {fileID: 9222618}
-  - 124: {fileID: 12454192}
-  - 81: {fileID: 8159256}
-  - 114: {fileID: 11450996}
-  - 114: {fileID: 11402894}
-  - 114: {fileID: 11483644}
-  - 82: {fileID: 8252726}
+  - 4: {fileID: 449030}
+  - 20: {fileID: 2099124}
+  - 92: {fileID: 9235036}
+  - 124: {fileID: 12413666}
+  - 81: {fileID: 8175908}
+  - 114: {fileID: 11498462}
+  - 82: {fileID: 8252356}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Menu Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &466448
+--- !u!4 &449030
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
-  m_LocalRotation: {x: 0.5, y: -0.5000001, z: 0.5, w: 0.49999994}
-  m_LocalPosition: {x: -43.8, y: 104.1, z: -107}
+  m_GameObject: {fileID: 110958}
+  m_LocalRotation: {x: 0.3535534, y: 0.3535534, z: -0.14644663, w: 0.85355335}
+  m_LocalPosition: {x: -45, y: 35, z: -70}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &2026856
+--- !u!20 &2099124
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
@@ -51,11 +49,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -20
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 20
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -69,30 +67,30 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!81 &8159256
+--- !u!81 &8175908
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
---- !u!82 &8252726
+--- !u!82 &8252356
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: f60914514289c044ab4f537cec9edd07, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
-  Priority: 0
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -138,7 +136,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -150,19 +148,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!92 &9222618
+--- !u!92 &9235036
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
---- !u!114 &11402894
+--- !u!114 &11498462
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
@@ -170,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   intensity: 0.036
-  chromaticAberration: 0.2
+  chromaticAberration: 10
   axialAberration: 0.5
   blur: 0
   blurSpread: 0.75
@@ -180,40 +178,12 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
---- !u!114 &11450996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac165c8ac465504ea7a7b7293483bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startCameraDirection: 2
-  RotateAnimationTime: 2
-  CameraDistanceLerpTime: 0.25
-  TargetCameraDistance: 20
-  MinCameraDistance: 8
-  MaxCameraDistance: 40
---- !u!114 &11483644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f27040e19c215438010abf4b1bca43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!124 &12454192
+--- !u!124 &12413666
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133036}
+  m_GameObject: {fileID: 110958}
   m_Enabled: 1
 --- !u!1001 &100100000
 Prefab:
@@ -224,5 +194,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 133036}
+  m_RootGameObject: {fileID: 110958}
   m_IsPrefabParent: 1

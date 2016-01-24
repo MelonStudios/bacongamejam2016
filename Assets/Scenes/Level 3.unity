@@ -514,22 +514,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
-      propertyPath: Explosion
-      value: 
-      objectReference: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
-    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
-      propertyPath: SlowToStopTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
-      propertyPath: LowestTimeScale
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
-      propertyPath: PlayerGib
-      value: 
-      objectReference: {fileID: 144526, guid: acc6c46007cd34340b911802f2bdb4dd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
   m_IsPrefabParent: 0
@@ -3918,7 +3902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &1123286056
 Prefab:
   m_ObjectHideFlags: 0
@@ -5489,66 +5473,6 @@ Prefab:
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8159256, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 12454192, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9222618, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: intensity
-      value: 0.036
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: chromaticAberration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: vignetteShader
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: separableBlurShader
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463354, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: chromAberrationShader
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11450996, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: MaxCameraDistance
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: near clip plane
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 11450996, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: startCameraDirection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: orthographic size
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
-      propertyPath: m_Depth
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}

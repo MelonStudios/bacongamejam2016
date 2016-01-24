@@ -207,7 +207,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.99981743, z: 0, w: 0.019108944}
   m_LocalPosition: {x: -40.67, y: 3.4, z: -58.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -557,7 +557,7 @@ MonoBehaviour:
   FirePoints:
   - {fileID: 167268}
   FireCooldown: 0
-  GodMode: 0
+  GodMode: 1
   DebugFire: 0
   RotationSpeed: 12
   Speed: 500
@@ -574,6 +574,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireCooldown: 0
   BounceLimit: 5
+  FireSounds:
+  - {fileID: 8300000, guid: fdb602c1896331948958092230e03c76, type: 3}
+  - {fileID: 8300000, guid: a0b19e419d3af6e479e970ae258901d4, type: 3}
+  - {fileID: 8300000, guid: d293f77f92307b143be9994dde22d594, type: 3}
+  - {fileID: 8300000, guid: 0ccfcce8fb60d284aa28dfd7969ac339, type: 3}
+  EnemyDeathSounds:
+  - {fileID: 8300000, guid: cfa668176affaf541aeb0d0ce8671113, type: 3}
+  - {fileID: 8300000, guid: 328bb052c1a6ad243b1f4db29e27638a, type: 3}
+  - {fileID: 8300000, guid: 8a3d6b6978512a0488140b18a7aede5b, type: 3}
+  - {fileID: 8300000, guid: f626396c9c8bf8641b70b25573c6b714, type: 3}
+  ReflectionSounds:
+  - {fileID: 8300000, guid: 4378c1ee370429a42a91577757b3ebe3, type: 3}
+  - {fileID: 8300000, guid: 4452800110470d64fafdec766fc63bb6, type: 3}
+  WallSounds:
+  - {fileID: 8300000, guid: 671cb3f3e9b63f545aee8d3a210b0daa, type: 3}
 --- !u!114 &11465038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -802,7 +817,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1, y: 1.6500001, z: -1.5}
+  m_ConnectedAnchor: {x: -0.9999986, y: 1.6500001, z: -1.5000018}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1.2
@@ -822,7 +837,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1, y: 1.6500001, z: -1.5}
+  m_ConnectedAnchor: {x: 1.0000013, y: 1.6500001, z: -1.5}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1
