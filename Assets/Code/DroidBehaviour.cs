@@ -67,7 +67,7 @@ public class DroidBehaviour : MonoBehaviour
                         StopAllCoroutines();
                         StartCoroutine(SeekPlayer());
                     }
-                    else if (Vector3.Angle(transform.forward, path.NextPoint - transform.position) < 0.2)
+                    else if (Vector3.Angle(transform.forward, path.NextPoint - transform.position) < 0.8)
                     {
                         mode = DroidMode.Walking;
 
