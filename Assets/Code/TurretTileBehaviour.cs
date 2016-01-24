@@ -128,12 +128,10 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         while (true)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
             if (player.gameObject != null)
             {
                 Vector3 targetDir = player.transform.position - TowerGun.transform.position;
-                float step = SeekRotateSpeed * Time.deltaTime;
+                float step = turretInformation.SeekRotateSpeed * Time.deltaTime;
                 Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
                 newDir = new Vector3(newDir.x, 0, newDir.z);
                 TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
@@ -144,22 +142,6 @@ public class TurretTileBehaviour : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
-=======
-            Vector3 targetDir = player.transform.position - TowerGun.transform.position;
-            float step = turretInformation.SeekRotateSpeed * Time.deltaTime;
-=======
-            Vector3 targetDir = player.transform.position - TowerGun.transform.position;
-            float step = SeekRotateSpeed * Time.deltaTime;
->>>>>>> parent of 5bd9354... Made player die correctly
-            Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
-            newDir = new Vector3(newDir.x, 0, newDir.z);
-            TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
-
-            yield return new WaitForEndOfFrame();
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> parent of 5bd9354... Made player die correctly
         }
     }
 
