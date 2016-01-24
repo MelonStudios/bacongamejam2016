@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyInformation))]
-public class EnemyTowerBehaviour : MonoBehaviour
+public class TurretTileBehaviour : MonoBehaviour
 {
     public GameObject TowerGun;
     public GameObject Bullet;

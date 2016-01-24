@@ -28,6 +28,7 @@ GameObject:
   - 4: {fileID: 495772}
   - 136: {fileID: 13654650}
   - 114: {fileID: 11454508}
+  - 114: {fileID: 11464448}
   m_Layer: 11
   m_Name: Droid
   m_TagString: Enemy
@@ -53,8 +54,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147940}
-  m_LocalRotation: {x: 0, y: -0.82533854, z: 0, w: 0.5646382}
-  m_LocalPosition: {x: -9.9, y: 3.4257812, z: -35.6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470236}
@@ -123,7 +124,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6732fac05baf5b4baafa6bcbfeb2ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyState: 0
+--- !u!114 &11464448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeeed772b63a5b40a863ef70aca1b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedDroid: {fileID: 134210, guid: 75ea3b813a35b9d458a1e966d3c5cc58, type: 2}
 --- !u!136 &13654650
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -143,7 +155,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: DestroyedDroid
+      value: 
+      objectReference: {fileID: 134210, guid: 75ea3b813a35b9d458a1e966d3c5cc58, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 147940}
