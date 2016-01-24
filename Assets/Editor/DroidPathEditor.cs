@@ -2,44 +2,64 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets
+[CustomEditor(typeof(DroidPath))]
+class DroidPathEditor : Editor
 {
-    [CustomEditor(typeof(DroidPath))]
-    class DroidPathEditor : Editor
+    DroidPath path;
+    GUIStyle labelStyle = new GUIStyle();
+
+    void OnEnable()
     {
-        public override void OnInspectorGUI()
+        path = (DroidPath)target;
+
+        labelStyle.fontStyle = FontStyle.Bold;
+        labelStyle.normal.textColor = Color.green;
+    }
+
+    public override void OnInspectorGUI()
+    {
+        if (path.PathPoints == null) path.PathPoints = new List<Vector3>();
+
+        GUI.enabled = !Application.isPlaying;
+        if (GUILayout.Button("Add Path Point")) path.PathPoints.Add(Vector3.zero);
+
+        ListPathPoints(ref path.PathPoints);
+
+        GUI.enabled = true;
+
+        if (GUI.changed)
         {
-            DroidPath path = (DroidPath)target;
-
-            GUI.enabled = !Application.isPlaying;
-            if (GUILayout.Button("Add Path Point")) path.PathPoints.Add(Vector3.zero);
-
-            ListPathPoints(ref path.PathPoints);
-
-            GUI.enabled = true;
+            EditorUtility.SetDirty(target);
         }
+    }
 
-        private void ListPathPoints(ref List<Vector3> points)
+    void OnSceneGUI()
+    {
+        Undo.RecordObject(path, "Undo Droid Path Move");
+
+        for (int i = 0; i < path.PathPoints.Count; i++)
         {
-            EditorGUILayout.LabelField("Points");
+            var targetPos = HexSnapHelper.CalculateNearestSnapLocation(Handles.PositionHandle(path.PathPoints[i], Quaternion.identity));
+            targetPos.y = path.transform.position.y;
+            path.PathPoints[i] = targetPos;
+            Handles.Label(path.PathPoints[i], i.ToString(), labelStyle);
+        }
+    }
 
+    private void ListPathPoints(ref List<Vector3> points)
+    {
+        EditorGUILayout.LabelField("Points");
+
+        GUI.enabled = false;
+        for (int i = 0; i < points.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.Vector3Field(i.ToString(), points[i]);
+            GUI.enabled = true;
+            if (GUILayout.Button("-", GUILayout.ExpandWidth(false))) points.RemoveAt(i);
             GUI.enabled = false;
-            for (int i = 0; i < points.Count; i++)
-            {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.Vector3Field(i.ToString(), points[i]);
-                GUI.enabled = true;
-                if (GUILayout.Button("-", GUILayout.ExpandWidth(false))) points.RemoveAt(i);
-                EditorGUILayout.EndHorizontal();
-
-                DrawHandle();
-            }
-            GUI.enabled = true;
+            EditorGUILayout.EndHorizontal();
         }
-
-        private void DrawHandle()
-        {
-
-        }
+        GUI.enabled = true;
     }
 }

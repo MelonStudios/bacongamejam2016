@@ -22,7 +22,6 @@ public class GameInformation : MonoBehaviour
         }
     }
 
-
     void Awake()
     {
         Instance = this;
