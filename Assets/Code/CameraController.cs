@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
 
     public VisualEffectController VisualEffectController { get; private set; }
 
+    public CameraDirection startCameraDirection;
+
     private CameraDirection _cameraDirection;
     private const float cameraPhysicalDistance = 30;
 
@@ -41,7 +43,7 @@ public class CameraController : MonoBehaviour
         Instance = this;
         VisualEffectController = GetComponent<VisualEffectController>();
         player = GameObject.FindGameObjectWithTag("Player");
-        CameraDirection = CameraDirection.North;
+        CameraDirection = startCameraDirection;
         StartCoroutine(CameraDistanceController());
     }
 
