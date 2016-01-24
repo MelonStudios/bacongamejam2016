@@ -37,6 +37,7 @@ public class GameInformation : MonoBehaviour
 
 public enum GameState
 {
+    Menus,
     PreGame,
     Playing,
     PostGame,

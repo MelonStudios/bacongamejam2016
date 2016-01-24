@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerInformation))]
 public class FireController : MonoBehaviour
@@ -13,14 +14,14 @@ public class FireController : MonoBehaviour
     private float cooldown;
     
     private PlayerInformation playerInformtion;
-    private LineRenderer linerenderer;
+    private LineRenderer lineRenderer;
     private float lineWidth = 0;
 
     void Start()
     {
         playerInformtion = GetComponent<PlayerInformation>();
-        linerenderer = GetComponent<LineRenderer>();
-        linerenderer.SetVertexCount(BounceLimit);
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.SetVertexCount(BounceLimit);
     }
 
     void Update()
@@ -34,98 +35,91 @@ public class FireController : MonoBehaviour
         {
             cooldown = 0;
 
-            List<Tuple<Vector3, Vector3>> points = CalculateFirePoints();
-            CalculateEnemyHits(points);
-            AnimateShot(points);
+            FireResults points = CalculateFirePoints();
+            ScoreController.Instance.CalculateFireScore(points);
 
             foreach (var point in points)
             {
-                Debug.DrawRay(point.Item1, Vector3.up, Color.red, 10);
+                Debug.DrawLine(point.Origin, point.Ending, Color.red, 5);
             }
 
             CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
             CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
         }
-       
-        if (lineWidth > 0)
+
+        if (Input.GetMouseButtonDown(1))
         {
-            lineWidth -= 0.1f;
-            linerenderer.SetWidth(lineWidth, lineWidth);
-        }
-        else
-        {
-            lineWidth = 0;
-            linerenderer.SetWidth(0, 0);
-        }
-        
+            LevelController.RestartLevel();
+        }        
     }
 
     /// <summary>
     /// Calculates all the fire points
     /// </summary>
     /// <returns>A list of point-heading tuples</returns>
-    private List<Tuple<Vector3, Vector3>> CalculateFirePoints()
+    private FireResults CalculateFirePoints()
     {
-        var firePoints = new List<Tuple<Vector3, Vector3>>();
-        firePoints.Add(new Tuple<Vector3, Vector3>(playerInformtion.FirePoints[0].transform.position, transform.forward));
-
-        firePoints = GetNextPointRecursivly(ref firePoints);
+        var firePoints = new FireResults();
+        firePoints = GetNextPointRecursivly(ref firePoints, playerInformtion.FirePoints[0].transform.position, transform.forward);
 
         return firePoints;
     }
 
-    private List<Tuple<Vector3, Vector3>> GetNextPointRecursivly(ref List<Tuple<Vector3, Vector3>> currentPoints)
+    private FireResults GetNextPointRecursivly(ref FireResults currentFireResults, Vector3 origin, Vector3 heading)
     {
-        if (currentPoints.Count >= BounceLimit) return currentPoints;
+        if (currentFireResults.Bounces >= BounceLimit) return currentFireResults;
 
         RaycastHit hit;
-        if (Physics.Raycast(currentPoints.Last().Item1, currentPoints.Last().Item2, out hit, 1000, 1 << 12)) // HexWall 12
+        if (Physics.Raycast(origin, heading, out hit, 1000, 1 << 12)) // HexWall 12
         {
             HexType hexType = hit.collider.GetComponentInParent<HexTileInformation>().HexType;
-            Vector3 nextPointHeading = Vector3.zero;
+            List<GameObject> hitEnemies = CalculateEnemyHits(origin, hit.point, heading);
+
+            currentFireResults.Add(new FireSegment(origin, hit.point, hexType, hitEnemies));
 
             switch (hexType)
             {
                 case HexType.Wall:
                     break;
                 case HexType.Mirror:
-                    nextPointHeading = Vector3.Reflect(currentPoints.Last().Item2, hit.normal);
+                    currentFireResults = GetNextPointRecursivly(ref currentFireResults, hit.point, Vector3.Reflect(heading, hit.normal));
                     break;
             }
-
-            currentPoints.Add(new Tuple<Vector3, Vector3>(hit.point, nextPointHeading));
-
-            if (nextPointHeading != Vector3.zero)
-            {
-                currentPoints = GetNextPointRecursivly(ref currentPoints);
-            }
         }
 
-        return currentPoints;
+        return currentFireResults;
     }
 
-    private void CalculateEnemyHits(List<Tuple<Vector3, Vector3>> points)
+    private List<GameObject> CalculateEnemyHits(Vector3 origin, Vector3 ending, Vector3 direction)
     {
-        for (int i = 0; i < points.Count; i++)
-        {
-            if (points.Count > i + 1) // is there a to-from point for a line
-            {
-                float rayDistance = Vector3.Distance(points[i].Item1, points[i + 1].Item1);
-
-                RaycastHit[] enemyHits = Physics.RaycastAll(points[i].Item1, points[i].Item2, rayDistance, 1 << 11); // Enemy layer 11
-
-                foreach (var enemy in enemyHits)
-                {
-                    enemy.collider.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
-                }
-            }
-        }
+        float rayDistance = Vector3.Distance(origin, ending);
+        return Physics.RaycastAll(origin, direction, rayDistance, 1 << 11).Select(rh => rh.collider.gameObject).ToList(); // Enemy layer 11
     }
-    private void AnimateShot(List<Tuple<Vector3, Vector3>> points)
+
+    public void AnimateShot(FireResults fireResults)
     {
-        linerenderer.SetVertexCount(points.Count);
+        lineRenderer.SetVertexCount(fireResults.Count * 2);
         lineWidth = 1f;
-        linerenderer.SetWidth(lineWidth, lineWidth);
-        linerenderer.SetPositions(points.Select(p => p.Item1).ToArray());
+        lineRenderer.SetWidth(lineWidth, lineWidth);
+
+        for (int i = 0; i < fireResults.Count; i += 2)
+        {
+            lineRenderer.SetPosition(i, fireResults[i].Origin);
+            lineRenderer.SetPosition(i + 1, fireResults[i].Ending);
+        }
+
+        StartCoroutine(AnimateLineRendererOut());
+    }
+
+    IEnumerator AnimateLineRendererOut()
+    {
+        while (lineWidth > 0)
+        {
+            lineWidth -= 0.1f;
+            lineRenderer.SetWidth(lineWidth, lineWidth);
+            yield return new WaitForEndOfFrame();
+        }
+            lineWidth = 0;
+            lineRenderer.SetWidth(0, 0);
     }
 }

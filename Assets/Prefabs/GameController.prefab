@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &104032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 479132}
+  - 114: {fileID: 11458842}
+  m_Layer: 11
+  m_Name: ScoreController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &127272
 GameObject:
   m_ObjectHideFlags: 0
@@ -20,24 +36,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &194532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 470348}
-  - 33: {fileID: 3312016}
-  - 64: {fileID: 6448758}
-  - 114: {fileID: 11462636}
-  m_Layer: 8
-  m_Name: PlayerLooktoMouseCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &437086
 Transform:
   m_ObjectHideFlags: 1
@@ -48,40 +46,21 @@ Transform:
   m_LocalPosition: {x: 1.875, y: 3.4257812, z: 3.6171875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 470348}
+  - {fileID: 479132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &470348
+--- !u!4 &479132
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194532}
+  m_GameObject: {fileID: 104032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: -11.775, y: 0, z: -39.217186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 437086}
   m_RootOrder: 0
---- !u!33 &3312016
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194532}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &6448758
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &11417426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,17 +83,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16ef79570960ec4488431623f1f09b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11462636
+--- !u!114 &11458842
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194532}
+  m_GameObject: {fileID: 104032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 491debd1967d4824182363af79ed6414, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bb93faa9af847b4dbf493acea029045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SingleShot: 0
+  Wall: 0
+  Mirror: 10
+  SingleSecond: 0
+  TenSeconds: 0
+  ThirtySeconds: 0
+  TurretKill: 100
+  DroidKill: 50
+  TwoMirrorMulti: 2
+  TenMulti: 1
+  ThirtyMulti: 1
 --- !u!114 &11464196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameState: 0
-  HexTemplate: {fileID: 100176, guid: e94fdf3e13308b04eb7d8a85894d602f, type: 2}
+  GameOverResult: 0
 --- !u!114 &11476112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee31058c19f5f97449f8a1585995ae76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlowToStopTime: 0
+  SlowToStopTime: 0.2
+  LowestTimeScale: 0.2
+  Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
