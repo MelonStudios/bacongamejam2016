@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class ScoreController : MonoBehaviour
     {
         Instance = this;
         Score = 0;
+        TimeCanvas.enabled = false;
     }
 
     #region Base Scores
@@ -35,6 +38,18 @@ public class ScoreController : MonoBehaviour
 
     // HexType Multiplers
     public float TwoMirrorMulti;
+
+    #endregion
+
+    #region CanvasElements
+
+    // Score Time Canvas
+    public Canvas TimeCanvas;
+    public Text TimeRemaining;
+    public Text CurrentScore;
+    public Text TenBonus;
+    public Text ThirtyBonus;
+    public Text FinalScore;
 
     #endregion
 
@@ -105,15 +120,7 @@ public class ScoreController : MonoBehaviour
 
     public void CalculateTimeRemainingScore()
     {
-        float timeRemining = GameInformation.Instance.LevelInformation.TimeRemaining;
-        float tempScore = 0;
-
-        tempScore += AddScore(Mathf.FloorToInt(timeRemining) * SingleSecond, "single seconds");
-        tempScore += AddScore(Mathf.FloorToInt(timeRemining/10) * TenSeconds, "ten seconds");
-        tempScore += AddScore(Mathf.FloorToInt(timeRemining/30) * ThirtySeconds, "thirty seconds");
-
-        Debug.LogWarning("Final score time calc: " + tempScore);
-        Score += tempScore;
+        StartCoroutine(DisplayTimeBasedScore());
     }
 
     private float AddScore(float amount, string reason)
@@ -125,6 +132,53 @@ public class ScoreController : MonoBehaviour
     void Update()
     {
         DebugController.Instance.LogLine("SCORE: " + Score);
+    }
+
+    IEnumerator DisplayTimeBasedScore()
+    {
+        float timeRemining = GameInformation.Instance.LevelInformation.TimeRemaining;
+
+        float tempTimeRem = timeRemining;
+        float canvasStart = Score;
+        float canvasEnd = Score + Mathf.FloorToInt(timeRemining) * SingleSecond;
+
+        TimeRemaining.text = timeRemining.ToString();
+        CurrentScore.text = Score.ToString();
+        TenBonus.text = "x" + Mathf.FloorToInt(timeRemining / 10);
+        ThirtyBonus.text = "x" + Mathf.FloorToInt(timeRemining / 30);
+
+        TimeCanvas.enabled = true;
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < Mathf.FloorToInt(timeRemining) * 5; i++)
+        {
+            TimeRemaining.text = Mathf.Lerp(timeRemining, 0, MathUtility.PercentageBetween(i, 0, Mathf.FloorToInt(timeRemining) * 5)).ToString();
+            CurrentScore.text = Mathf.Lerp(canvasStart, canvasEnd, MathUtility.PercentageBetween(i, 0, Mathf.FloorToInt(timeRemining) * 5)).ToString();
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        TimeRemaining.text = "0";
+        CurrentScore.text = canvasEnd.ToString();
+
+        yield return new WaitForSeconds(0.6f);
+        TenBonus.transform.parent.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.6f);
+        ThirtyBonus.transform.parent.gameObject.SetActive(true);
+
+        // Actually calculate and add values
+        float tempScore = 0;
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining) * SingleSecond, "single seconds");
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining / 10) * TenSeconds, "ten seconds");
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining / 30) * ThirtySeconds, "thirty seconds");
+        Debug.LogWarning("Final score time calc: " + tempScore);
+
+        yield return new WaitForSeconds(0.6f);
+        FinalScore.transform.parent.gameObject.SetActive(true);
+
+        FinalScore.text = (Score += tempScore).ToString();
     }
 }
 

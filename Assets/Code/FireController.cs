@@ -119,7 +119,8 @@ public class FireController : MonoBehaviour
             lineRenderer.SetWidth(lineWidth, lineWidth);
             yield return new WaitForEndOfFrame();
         }
-            lineWidth = 0;
-            lineRenderer.SetWidth(0, 0);
+
+        lineWidth = 0;
+        lineRenderer.SetWidth(0, 0);
     }
 }

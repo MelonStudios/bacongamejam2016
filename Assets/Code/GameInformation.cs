@@ -56,6 +56,7 @@ public enum GameState
     Menus,
     PreGame,
     Playing,
+    Paused,
     PostGame,
     GameOver
 }
