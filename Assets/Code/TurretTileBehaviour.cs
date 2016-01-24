@@ -9,6 +9,7 @@ public class TurretTileBehaviour : MonoBehaviour
     public GameObject DestroyedTurret;
     public GameObject FirePoint;
     public GameObject Explosion;
+    public GameObject TowerGunGib;
 
     public float FireCooldown;
 
@@ -38,6 +39,10 @@ public class TurretTileBehaviour : MonoBehaviour
         {
             turretInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedTurret, transform.position, transform.rotation);
+            GameObject towergib = Instantiate(TowerGunGib, transform.position + Vector3.up * 4f, transform.rotation) as GameObject;
+            towergib.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-200f,200f),Random.Range(-200f,200f),Random.Range(-200f,200f)));
+            towergib.GetComponent<Rigidbody>().AddTorque(Vector3.one * 200f);
+
             Instantiate(Explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

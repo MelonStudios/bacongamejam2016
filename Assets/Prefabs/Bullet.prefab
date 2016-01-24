@@ -73,7 +73,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 185036913b066cb43bee3b3619d99fbd, type: 2}
+  - {fileID: 2100000, guid: d2bd0a232b556954e854879ee985c2ec, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -139,7 +139,7 @@ TrailRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 0}
-  - {fileID: 2100000, guid: 185036913b066cb43bee3b3619d99fbd, type: 2}
+  - {fileID: 2100000, guid: da51cfb9d3746624a95022382b37f555, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -185,7 +185,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.21379328, a: 1}
   m_Intensity: 6
   m_Range: 10
   m_SpotAngle: 30
@@ -223,6 +223,7 @@ MonoBehaviour:
   LifeTime: 2
   BulletSpeed: 40
   RotateSpeed: 200
+  Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
   BulletMesh: {fileID: 177808}
 --- !u!135 &13575186
 SphereCollider:
@@ -307,6 +308,14 @@ Prefab:
       propertyPath: LifeTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: da51cfb9d3746624a95022382b37f555, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171186}
