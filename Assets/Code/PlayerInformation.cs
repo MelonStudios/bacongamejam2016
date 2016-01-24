@@ -3,6 +3,7 @@
 public class PlayerInformation : CharacterInformation
 {
     public bool GodMode;
+    public bool DebugFire;
 
     public float Speed;
 

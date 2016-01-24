@@ -13,13 +13,8 @@ public static class LevelController
         SceneManager.LoadScene("MainMenu");
     }
 
-    public static void LoadLevel(LevelGroup levelGroup, int levelNumber)
+    public static void LoadLevel(int levelNumber)
     {
-        SceneManager.LoadScene("Level_" + levelGroup + levelNumber);
+        SceneManager.LoadScene("Level " + levelNumber);
     }
-}
-
-public enum LevelGroup
-{
-    A
 }

@@ -31,21 +31,36 @@ public class FireController : MonoBehaviour
 
         cooldown += Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1") && cooldown > FireCooldown)
+        if (playerInformtion.DebugFire)
         {
-            cooldown = 0;
+            if (Input.GetButton("Fire1"))
+            {
+                FireResults points = CalculateFirePoints();
 
-            FireResults points = CalculateFirePoints();
-            ScoreController.Instance.CalculateFireScore(points);
-
-            CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
-            CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
+                foreach (var point in points)
+                {
+                    Debug.DrawLine(point.Origin, point.Ending, Color.red);
+                }
+            }
         }
-
-        if (Input.GetMouseButtonDown(1))
+        else
         {
-            LevelController.RestartLevel();
-        }        
+            if (Input.GetButtonDown("Fire1") && cooldown > FireCooldown)
+            {
+                cooldown = 0;
+
+                FireResults points = CalculateFirePoints();
+                ScoreController.Instance.CalculateFireScore(points);
+
+                CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
+                CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                LevelController.RestartLevel();
+            }
+        }
     }
 
     /// <summary>
