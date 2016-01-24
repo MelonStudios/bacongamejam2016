@@ -99,6 +99,8 @@ public class ScoreController : MonoBehaviour
                 enemy.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
             }
         }
+
+        GameInformation.Instance.PlayerInformation.GetComponent<FireController>().AnimateShot(fireResults);
     }
 
     public void CalculateTimeRemainingScore()
