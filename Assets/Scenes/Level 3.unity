@@ -2481,6 +2481,47 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b938543d718bfb446b185c2b3ee6c82b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &782382741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 782382743}
+  - 114: {fileID: 782382742}
+  m_Layer: 11
+  m_Name: LevelInformation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &782382742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 782382741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aaa72768fc0d6f40a14bcb5bd1de4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeLimit: 60
+  TimeRemaining: 0
+--- !u!4 &782382743
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 782382741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.9, y: 3.4257812, z: -35.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1001 &785139909
 Prefab:
   m_ObjectHideFlags: 0
@@ -6320,11 +6361,11 @@ Transform:
   - {fileID: 672476503}
   - {fileID: 1043724245}
   - {fileID: 556993199}
-  - {fileID: 1388608441}
   - {fileID: 29484888}
   - {fileID: 1848578864}
   - {fileID: 2132541629}
   - {fileID: 1856626543}
+  - {fileID: 1388608441}
   - {fileID: 399564383}
   - {fileID: 718761570}
   - {fileID: 812776464}
@@ -6375,13 +6416,13 @@ Transform:
   - {fileID: 1988493429}
   - {fileID: 1462503594}
   - {fileID: 1414566833}
-  - {fileID: 1757530304}
   - {fileID: 1751438754}
-  - {fileID: 1727752020}
+  - {fileID: 1757530304}
   - {fileID: 1250129723}
+  - {fileID: 1727752020}
   - {fileID: 745272008}
-  - {fileID: 846146196}
   - {fileID: 1933311461}
+  - {fileID: 846146196}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1001 &1856626542
