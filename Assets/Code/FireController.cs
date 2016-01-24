@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
+[RequireComponent(typeof(PlayerInformation))]
 public class FireController : MonoBehaviour
 {
     public GameObject FirePoint;
@@ -11,18 +12,23 @@ public class FireController : MonoBehaviour
     public int BounceLimit;
 
     private float cooldown;
-    
-    LineRenderer linerenderer;
+
+    private PlayerInformation playerInformtion;
+    private LineRenderer linerenderer;
     private float lineWidth = 0;
 
     void Start()
     {
+        playerInformtion = GetComponent<PlayerInformation>();
         linerenderer = GetComponent<LineRenderer>();
         linerenderer.SetVertexCount(BounceLimit);
     }
 
     void Update()
     {
+        if (GameInformation.Instance.GameState != GameState.Playing) return;
+        if (playerInformtion.PlayerState != PlayerState.Alive) return;
+
         cooldown += Time.deltaTime;
 
         if (Input.GetButtonDown("Fire1") && cooldown > FireCooldown)

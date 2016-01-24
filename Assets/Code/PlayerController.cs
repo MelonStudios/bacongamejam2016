@@ -17,20 +17,20 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (playerInformation.PlayerState == PlayerState.Alive)
+        if (GameInformation.Instance.GameState != GameState.Playing) return;
+        if (playerInformation.PlayerState != PlayerState.Alive) return;
+
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * playerInformation.Speed);
+
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit mouseHit;
+
+        // PlayerLooktoMouseCollider = 8
+        if (Physics.Raycast(mouseRay, out mouseHit, 1000, 1 << 8))
         {
-            float vertical = Input.GetAxis("Vertical");
-            float horizontal = Input.GetAxis("Horizontal");
-            rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * playerInformation.Speed);
-
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit mouseHit;
-
-            // PlayerLooktoMouseCollider = 8
-            if (Physics.Raycast(mouseRay, out mouseHit, 1000, 1 << 8))
-            {
-                transform.LookAt(new Vector3(mouseHit.point.x, transform.position.y, mouseHit.point.z));
-            }
+            transform.LookAt(new Vector3(mouseHit.point.x, transform.position.y, mouseHit.point.z));
         }
     }
 

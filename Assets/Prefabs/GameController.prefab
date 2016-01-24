@@ -9,6 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 437086}
   - 114: {fileID: 11476112}
+  - 114: {fileID: 11490380}
+  - 114: {fileID: 11444766}
+  - 114: {fileID: 11472228}
+  - 114: {fileID: 11461688}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -41,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.875, y: 3.4257812, z: 3.6171875}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470348}
@@ -78,6 +82,29 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11444766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee680ceefcc8c9548808b89d488f9c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11461688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee31058c19f5f97449f8a1585995ae76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlowToStopTime: 2
 --- !u!114 &11462636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,6 +114,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 491debd1967d4824182363af79ed6414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11472228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ef79570960ec4488431623f1f09b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11476112
@@ -100,13 +138,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792cb0bdc13a4534a8e01b270cb9bd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11490380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e648d860a983ccb4d81b8693c39e267a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameState: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SlowToStopTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127272}

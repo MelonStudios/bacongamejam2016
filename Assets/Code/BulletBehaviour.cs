@@ -21,14 +21,20 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (other.GetComponentInParent<HexTileInformation>() != null)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            Destroy(BulletMesh);
-            Destroy(gameObject, 0.5f);
+            DestroySelf();
         }
         else if (other.GetComponentInParent<PlayerInformation>() != null)
         {
             other.GetComponentInParent<PlayerInformation>().PlayerState = PlayerState.Dead;
+            DestroySelf();
         }
+    }
+
+    private void DestroySelf()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        Destroy(BulletMesh);
+        Destroy(gameObject, 0.5f);
     }
 }

@@ -10,7 +10,7 @@ public class PlayerInformation : MonoBehaviour
         Speed = 500;
     }
 
-    void Start()
+    void Awake()
     {
         PlayerState = PlayerState.Alive;
     }

@@ -29,6 +29,8 @@ public class EnemyTowerBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (GameInformation.Instance.GameState != GameState.Playing) return;
+
         cooldown += Time.deltaTime;
 
         switch (mode)
@@ -95,7 +97,7 @@ public class EnemyTowerBehaviour : MonoBehaviour
     {
         while (true)
         {
-            TowerGun.transform.Rotate(Vector3.up, IdleRotateSpeed);
+            TowerGun.transform.Rotate(Vector3.up, IdleRotateSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
     }
