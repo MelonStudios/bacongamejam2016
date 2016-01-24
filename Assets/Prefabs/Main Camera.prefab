@@ -29,8 +29,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133036}
-  m_LocalRotation: {x: 0.5, y: -0.5000001, z: 0.5, w: 0.49999994}
-  m_LocalPosition: {x: -43.8, y: 104.1, z: -107}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -40.67, y: 200, z: -58.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCameraDirection: 2
-  RotateAnimationTime: 2
+  RotateAnimationTime: 0.2
   CameraDistanceLerpTime: 0.25
   TargetCameraDistance: 20
   MinCameraDistance: 8
