@@ -371,6 +371,7 @@ MonoBehaviour:
   DestroyedTurret: {fileID: 157394, guid: f6d9b507a95213b4ca69fea3e5f3223a, type: 2}
   FirePoint: {fileID: 145986}
   Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
+  TowerGunGib: {fileID: 104412, guid: 065d31b5c1c0f8c4398a49b1e89112b2, type: 2}
   IdleRotateSpeed: 0.35
   SeekRotateSpeed: 0.8
   FireCooldown: 2
@@ -430,6 +431,10 @@ Prefab:
       propertyPath: Explosion
       value: 
       objectReference: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: TowerGunGib
+      value: 
+      objectReference: {fileID: 104412, guid: 065d31b5c1c0f8c4398a49b1e89112b2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169424}
