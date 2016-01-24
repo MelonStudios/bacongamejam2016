@@ -1578,6 +1578,10 @@ Prefab:
       propertyPath: chromAberrationShader
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
+      propertyPath: m_Depth
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
   m_IsPrefabParent: 0

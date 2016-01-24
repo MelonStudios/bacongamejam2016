@@ -6165,31 +6165,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -69.8
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 40
+      value: 99.4
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -30
+      value: -104.6
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.3535534
+      value: -0.000000115202326
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.3535534
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.14644663
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.85355335
+      value: -0.00000011520231
       objectReference: {fileID: 0}
     - target: {fileID: 466448, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: m_RootOrder
@@ -6246,6 +6246,10 @@ Prefab:
     - target: {fileID: 11450996, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
       propertyPath: startCameraDirection
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026856, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
+      propertyPath: orthographic size
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00d0ff071ecc8fa47b19a22309e8de0c, type: 2}
@@ -6696,6 +6700,7 @@ Transform:
   - {fileID: 363937407}
   - {fileID: 1097930093}
   - {fileID: 279504860}
+  - {fileID: 117498864}
   - {fileID: 1359640435}
   - {fileID: 1656846298}
   - {fileID: 136373749}
@@ -6706,7 +6711,6 @@ Transform:
   - {fileID: 713061798}
   - {fileID: 2014185612}
   - {fileID: 1714591421}
-  - {fileID: 117498864}
   - {fileID: 814360665}
   - {fileID: 93577318}
   - {fileID: 467712066}
@@ -6715,49 +6719,49 @@ Transform:
   - {fileID: 398222734}
   - {fileID: 1045241883}
   - {fileID: 394345722}
-  - {fileID: 163960212}
   - {fileID: 1551519407}
   - {fileID: 1155657691}
+  - {fileID: 436814224}
   - {fileID: 1646988148}
   - {fileID: 286215399}
-  - {fileID: 2136722891}
   - {fileID: 306082808}
+  - {fileID: 1394920117}
   - {fileID: 895821758}
-  - {fileID: 1525240210}
-  - {fileID: 527536898}
+  - {fileID: 1709302126}
   - {fileID: 703569153}
-  - {fileID: 1911906959}
   - {fileID: 1541337303}
   - {fileID: 1229011204}
   - {fileID: 444973673}
   - {fileID: 1677357825}
   - {fileID: 2049632298}
   - {fileID: 957860206}
-  - {fileID: 783427523}
-  - {fileID: 331885009}
   - {fileID: 1396844453}
+  - {fileID: 783427523}
+  - {fileID: 1472069738}
+  - {fileID: 331885009}
+  - {fileID: 163960212}
+  - {fileID: 1525240210}
+  - {fileID: 1911906959}
   - {fileID: 1327041731}
   - {fileID: 2019704029}
-  - {fileID: 436814224}
   - {fileID: 1484883909}
   - {fileID: 1794577203}
-  - {fileID: 1709302126}
+  - {fileID: 1074414184}
   - {fileID: 440120045}
   - {fileID: 1513811753}
-  - {fileID: 1394920117}
+  - {fileID: 1973297597}
   - {fileID: 1141038028}
-  - {fileID: 1472069738}
   - {fileID: 1464974066}
   - {fileID: 1774256036}
+  - {fileID: 1723542328}
   - {fileID: 2099753881}
-  - {fileID: 1074414184}
-  - {fileID: 1973297597}
+  - {fileID: 2136722891}
   - {fileID: 536609274}
   - {fileID: 704365043}
   - {fileID: 1491773194}
   - {fileID: 609338226}
   - {fileID: 1077922599}
-  - {fileID: 1723542328}
+  - {fileID: 527536898}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1001 &1113451039
