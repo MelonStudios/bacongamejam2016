@@ -38,11 +38,6 @@ public class FireController : MonoBehaviour
             FireResults points = CalculateFirePoints();
             ScoreController.Instance.CalculateFireScore(points);
 
-            foreach (var point in points)
-            {
-                Debug.DrawLine(point.Origin, point.Ending, Color.red, 5);
-            }
-
             CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
             CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
         }
