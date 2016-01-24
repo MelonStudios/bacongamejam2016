@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyedDroid: {fileID: 134210, guid: 75ea3b813a35b9d458a1e966d3c5cc58, type: 2}
   Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
-  MaxDistanceTriggerNextPoint: 0.05
+  MaxDistanceTriggerNextPoint: 0.2
 --- !u!114 &11491510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +215,7 @@ Prefab:
       objectReference: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
     - target: {fileID: 0}
       propertyPath: MaxDistanceTriggerNextPoint
-      value: 0.05
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SeekPointRotateSpeed

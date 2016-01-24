@@ -29,7 +29,7 @@ public class DroidPath : MonoBehaviour
         nextPointIndex = 0;
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         if (PathPoints.Count < 1) return;
 
