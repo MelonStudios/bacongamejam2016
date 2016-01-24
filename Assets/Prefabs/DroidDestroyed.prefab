@@ -8,12 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419338}
-<<<<<<< HEAD
-  m_Layer: 11
-=======
   - 136: {fileID: 13696676}
   m_Layer: 0
->>>>>>> origin/master
   m_Name: DroidDestroyed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
