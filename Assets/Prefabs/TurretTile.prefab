@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 463972}
   - 95: {fileID: 9591842}
   - 64: {fileID: 6415450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TurretBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

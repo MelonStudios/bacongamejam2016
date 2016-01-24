@@ -1,38 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerInformation), typeof(FireController), typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    private PlayerInformation playerInformation;
     private Rigidbody rigid;
     private CameraController cameraController;
-
-    public float Speed;
-
-    void Reset()
-    {
-        Speed = 500f;
-    }
 
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        playerInformation = GetComponent<PlayerInformation>();
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
     void LateUpdate()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-        rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * Speed);
-
-        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit mouseHit;
-
-        // PlayerLooktoMouseCollider = 8
-        if (Physics.Raycast(mouseRay, out mouseHit, 1000, 1 << 8))
+        if (playerInformation.PlayerState == PlayerState.Alive)
         {
-            transform.LookAt(new Vector3(mouseHit.point.x, transform.position.y, mouseHit.point.z));
+            float vertical = Input.GetAxis("Vertical");
+            float horizontal = Input.GetAxis("Horizontal");
+            rigid.AddForce(CalculateMovement(cameraController.CameraDirection, horizontal, vertical) * playerInformation.Speed);
+
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit mouseHit;
+
+            // PlayerLooktoMouseCollider = 8
+            if (Physics.Raycast(mouseRay, out mouseHit, 1000, 1 << 8))
+            {
+                transform.LookAt(new Vector3(mouseHit.point.x, transform.position.y, mouseHit.point.z));
+            }
         }
     }
 
