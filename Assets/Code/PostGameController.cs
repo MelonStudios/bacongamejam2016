@@ -4,6 +4,8 @@ using System.Collections;
 public class PostGameController : MonoBehaviour
 {
     public float SlowToStopTime;
+    public float LowestTimeScale;
+
     public GameObject Explosion;
 
     bool doOnce;
@@ -36,6 +38,10 @@ public class PostGameController : MonoBehaviour
             deltaTime += Time.unscaledDeltaTime;
 
             Time.timeScale = Mathf.Lerp(startingTimeScale, 0, MathUtility.PercentageBetween(deltaTime, 0, SlowToStopTime));
+            if (Time.timeScale < LowestTimeScale)
+            {
+                Time.timeScale = LowestTimeScale;
+            }
             yield return new WaitForEndOfFrame();
         }
 

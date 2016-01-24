@@ -878,6 +878,14 @@ Prefab:
       propertyPath: Explosion
       value: 
       objectReference: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
+    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
+      propertyPath: SlowToStopTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494034, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
+      propertyPath: LowestTimeScale
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b1b184d13515024a9feb7b9fe4f302b, type: 2}
   m_IsPrefabParent: 0
