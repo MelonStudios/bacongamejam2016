@@ -41,7 +41,7 @@ public class TurretTileBehaviour : MonoBehaviour
         {
             enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedTurret, transform.position, transform.rotation);
-            Instantiate(Explosion, transform.position, transform.rotation);
+            Instantiate(Explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

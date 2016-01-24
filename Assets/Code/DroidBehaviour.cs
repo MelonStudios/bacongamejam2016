@@ -31,7 +31,7 @@ public class DroidBehaviour : MonoBehaviour
         {
             enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedDroid, transform.position, transform.rotation);
-            Instantiate(Explosion, transform.position, transform.rotation);
+            Instantiate(Explosion, transform.position,Quaternion.LookRotation(Vector3.up));
             Destroy(gameObject);
         }
     }
