@@ -42,6 +42,11 @@ public class FireController : MonoBehaviour
             CalculateEnemyHits(points);
             AnimateShot(points);
 
+            foreach (var point in points)
+            {
+                Debug.DrawRay(point.Item1, Vector3.up, Color.red, 10);
+            }
+
             CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
             CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
         }
@@ -80,7 +85,6 @@ public class FireController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(currentPoints.Last().Item1, currentPoints.Last().Item2, out hit, 1000, 1 << 12)) // HexWall 12
         {
-
             HexType hexType = hit.collider.GetComponentInParent<HexTileInformation>().HexType;
             Vector3 nextPointHeading = Vector3.zero;
 
@@ -110,7 +114,7 @@ public class FireController : MonoBehaviour
         {
             if (points.Count > i + 1) // is there a to-from point for a line
             {
-                float rayDistance = Vector3.Distance(points[i].Item1, points[i].Item2);
+                float rayDistance = Vector3.Distance(points[i].Item1, points[i + 1].Item1);
 
                 RaycastHit[] enemyHits = Physics.RaycastAll(points[i].Item1, points[i].Item2, rayDistance, 1 << 11); // Enemy layer 11
 
@@ -125,9 +129,6 @@ public class FireController : MonoBehaviour
     {
         lineWidth = 1f;
         linerenderer.SetWidth(lineWidth, lineWidth);
-        for (int i = 0; i < points.Count; i++)
-        {
-            linerenderer.SetPosition(i, points[i].Item1);
-        }
+        linerenderer.SetPositions(points.Select(p => p.Item1).ToArray());
     }
 }

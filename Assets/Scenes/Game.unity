@@ -2536,6 +2536,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 12039748, guid: 418995fa881848e4787c75d023a8db06, type: 2}
+      propertyPath: m_Positions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 460418, guid: 418995fa881848e4787c75d023a8db06, type: 2}
       propertyPath: m_LocalPosition.x
       value: -40.67
