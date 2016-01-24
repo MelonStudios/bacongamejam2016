@@ -47,10 +47,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (player.gameObject != null) { 
-            transform.position = (CameraDirectionToRayVector(CameraDirection) * cameraPhysicalDistance) + player.transform.position;
-            transform.LookAt(player.transform);
-        }
+        transform.position = (CameraDirectionToRayVector(CameraDirection) * cameraPhysicalDistance) + player.transform.position;
+        transform.LookAt(player.transform);
 
         if (Input.GetKeyDown(KeyCode.E))
             CameraDirection = SwitchCameraDirection(CameraDirection, true);

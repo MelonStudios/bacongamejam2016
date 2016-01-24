@@ -91,17 +91,10 @@ public class TurretTileBehaviour : MonoBehaviour
 
     private bool CanSeePlayer()
     {
-        if (player.gameObject)
-        {
-            RaycastHit hit;
-            Physics.Raycast(TowerGun.transform.position, player.transform.position - TowerGun.transform.position, out hit);
-
-            return hit.collider != null && hit.collider.tag == "Player";
-        }
-        else
-        {
-            return false;
-        }
+        RaycastHit hit;
+        Physics.Raycast(TowerGun.transform.position, player.transform.position - TowerGun.transform.position, out hit);
+        
+        return hit.collider != null && hit.collider.tag == "Player";
     }
 
     private bool CanFireOnPlayer()
@@ -136,6 +129,7 @@ public class TurretTileBehaviour : MonoBehaviour
         while (true)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (player.gameObject != null)
             {
                 Vector3 targetDir = player.transform.position - TowerGun.transform.position;
@@ -153,12 +147,19 @@ public class TurretTileBehaviour : MonoBehaviour
 =======
             Vector3 targetDir = player.transform.position - TowerGun.transform.position;
             float step = turretInformation.SeekRotateSpeed * Time.deltaTime;
+=======
+            Vector3 targetDir = player.transform.position - TowerGun.transform.position;
+            float step = SeekRotateSpeed * Time.deltaTime;
+>>>>>>> parent of 5bd9354... Made player die correctly
             Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
             newDir = new Vector3(newDir.x, 0, newDir.z);
             TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
 
             yield return new WaitForEndOfFrame();
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 5bd9354... Made player die correctly
         }
     }
 

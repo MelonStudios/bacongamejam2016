@@ -11,9 +11,6 @@ public class PlayerLookColliderBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (player.gameObject != null)
-        {
-            transform.position = player.transform.position;
-        }
+        transform.position = player.transform.position;
     }
 }
