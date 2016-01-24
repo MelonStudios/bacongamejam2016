@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 11432512}
   m_Layer: 0
   m_Name: TurretTileDestroyed
-  m_TagString: Untagged
+  m_TagString: EnemyDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,6 +212,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: EnemyDead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

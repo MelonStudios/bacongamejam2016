@@ -21,6 +21,8 @@ public class PostGameController : MonoBehaviour
 
         if (doOnce)
         {
+            Debug.Log("GAME OVER: " + GameInformation.Instance.GameOverResult);
+
             doOnce = false;
             Instantiate(Explosion, GameInformation.Instance.PlayerInformation.gameObject.transform.position, Quaternion.LookRotation(Vector3.up));
             Destroy(GameInformation.Instance.PlayerInformation.gameObject);

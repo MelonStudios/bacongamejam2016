@@ -60,6 +60,7 @@ public class DroidBehaviour : MonoBehaviour
                 break;
             case DroidMode.SeekingPoint:
                 {
+                    DebugController.Instance.LogLine("DROID ANGLE: " + Vector3.Angle(transform.forward, path.NextPoint - transform.position));
                     if (PlayerIsVisible())
                     {
                         mode = DroidMode.SeekingPlayer;

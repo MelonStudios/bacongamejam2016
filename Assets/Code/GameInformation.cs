@@ -6,6 +6,7 @@ public class GameInformation : MonoBehaviour
     public static GameInformation Instance;
 
     public GameState GameState;
+    public GameOverResult GameOverResult;
 
     private PlayerInformation playerInformation;
 
@@ -40,4 +41,10 @@ public enum GameState
     Playing,
     PostGame,
     GameOver
+}
+
+public enum GameOverResult
+{
+    Win,
+    Lose
 }

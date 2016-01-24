@@ -109,7 +109,7 @@ GameObject:
   - 114: {fileID: 11496908}
   m_Layer: 0
   m_Name: TurretTile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,6 +450,10 @@ Prefab:
       propertyPath: TowerGunGib
       value: 
       objectReference: {fileID: 104412, guid: 065d31b5c1c0f8c4398a49b1e89112b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169424}
