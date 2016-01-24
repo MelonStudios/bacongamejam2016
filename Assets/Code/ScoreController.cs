@@ -117,7 +117,6 @@ public class ScoreController : MonoBehaviour
     {
         StartCoroutine(DisplayTimeBasedScore());
     }
-
     private float AddScore(float amount, string reason)
     {
         Debug.Log("SCORECALC: " + amount + " " + reason);
