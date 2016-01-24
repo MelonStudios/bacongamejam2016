@@ -22,6 +22,7 @@ public class DroidBehaviour : MonoBehaviour
 
     void Update()
     {
+
     }
 
     private void EnemyInformation_CharacterStateChanged(object sender, CharacterStateChangedEventArgs args)
