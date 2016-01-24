@@ -207,7 +207,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.99981743, z: 0, w: 0.019108944}
   m_LocalPosition: {x: -40.67, y: 3.4, z: -58.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -557,7 +557,8 @@ MonoBehaviour:
   FirePoints:
   - {fileID: 167268}
   FireCooldown: 0
-  GodMode: 1
+  GodMode: 0
+  DebugFire: 0
   Speed: 500
 --- !u!114 &11440644
 MonoBehaviour:
@@ -675,7 +676,12 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: 7.397723e+31, y: 4.805265e-11, z: 1.7590505e+22}
+  - {x: 1.8890737e+31, y: 3.941467e+12, z: 1.8486912e+31}
+  - {x: 1.01524734e+12, y: 1.7261859e+25, z: 0.00000021641402}
+  - {x: 0.000000042653653, y: 0.00000004149041, z: 0.0000006564691}
+  - {x: 4.26576e-39, y: 1.2871792e+22, z: -1.7070414e+38}
   m_Parameters:
     startWidth: 0.2
     endWidth: 0.2
@@ -795,7 +801,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1, y: 1.6500001, z: -1.5}
+  m_ConnectedAnchor: {x: -0.9999986, y: 1.6500001, z: -1.5000018}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1.2
@@ -815,7 +821,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1, y: 1.6500001, z: -1.5}
+  m_ConnectedAnchor: {x: 1.0000013, y: 1.6500001, z: -1.5}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1
