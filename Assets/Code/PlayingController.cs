@@ -3,6 +3,13 @@ using System.Collections;
 
 public class PlayingController : MonoBehaviour
 {
+    public Canvas DeathCanvas;
+    
+    void Awake()
+    {
+        DeathCanvas.enabled = false;
+    }
+
     void Update()
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
@@ -14,6 +21,7 @@ public class PlayingController : MonoBehaviour
         {
             GameInformation.Instance.GameOverResult = GameOverResult.Lose;
             GameInformation.Instance.GameState = GameState.PostGame;
+            DeathCanvas.enabled = true;
         }
         else if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
         {
