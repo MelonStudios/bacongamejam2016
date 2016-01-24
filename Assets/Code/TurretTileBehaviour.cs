@@ -5,13 +5,9 @@ using UnityEngine;
 public class TurretTileBehaviour : MonoBehaviour
 {
     public GameObject TowerGun;
-    public GameObject Bullet;
     public GameObject DestroyedTurret;
-    public GameObject FirePoint;
     public GameObject Explosion;
     public GameObject TowerGunGib;
-
-    public float FireCooldown;
 
     private GameObject player;
     private TurretMode mode;
@@ -107,11 +103,11 @@ public class TurretTileBehaviour : MonoBehaviour
 
     private void Fire()
     {
-        if (cooldown > FireCooldown)
+        if (cooldown > turretInformation.FireCooldown)
         {
             cooldown = 0;
 
-            Instantiate(Bullet, FirePoint.transform.position, TowerGun.transform.rotation);
+            Instantiate(turretInformation.Bullet, turretInformation.FirePoints[0].transform.position, TowerGun.transform.rotation);
         }
     }
 

@@ -6,14 +6,12 @@ using System.Linq;
 [RequireComponent(typeof(PlayerInformation))]
 public class FireController : MonoBehaviour
 {
-    public GameObject FirePoint;
     public float FireCooldown;
 
     public int BounceLimit;
 
     private float cooldown;
-
-    private GameObject firePoint;
+    
     private PlayerInformation playerInformtion;
     private LineRenderer linerenderer;
     private float lineWidth = 0;
@@ -23,8 +21,6 @@ public class FireController : MonoBehaviour
         playerInformtion = GetComponent<PlayerInformation>();
         linerenderer = GetComponent<LineRenderer>();
         linerenderer.SetVertexCount(BounceLimit);
-
-        firePoint = FirePoint;
     }
 
     void Update()
@@ -71,7 +67,7 @@ public class FireController : MonoBehaviour
     private List<Tuple<Vector3, Vector3>> CalculateFirePoints()
     {
         var firePoints = new List<Tuple<Vector3, Vector3>>();
-        firePoints.Add(new Tuple<Vector3, Vector3>(firePoint.transform.position, transform.forward));
+        firePoints.Add(new Tuple<Vector3, Vector3>(playerInformtion.FirePoints[0].transform.position, transform.forward));
 
         firePoints = GetNextPointRecursivly(ref firePoints);
 

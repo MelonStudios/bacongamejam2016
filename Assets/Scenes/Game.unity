@@ -920,8 +920,7 @@ Prefab:
       propertyPath: m_Name
       value: TurretTile 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b938543d718bfb446b185c2b3ee6c82b, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &527537231 stripped
@@ -1829,17 +1828,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5434612, guid: 418995fa881848e4787c75d023a8db06, type: 2}
-      propertyPath: m_Drag
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 14576850, guid: 418995fa881848e4787c75d023a8db06, type: 2}
-      propertyPath: m_Damper
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 11406788, guid: 418995fa881848e4787c75d023a8db06, type: 2}
       propertyPath: GodMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 418995fa881848e4787c75d023a8db06, type: 2}
@@ -2354,7 +2345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495772, guid: b5bf7f269441f094d8cfddb1d651d730, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.82533854
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 495772, guid: b5bf7f269441f094d8cfddb1d651d730, type: 2}
       propertyPath: m_LocalRotation.z
@@ -2362,7 +2353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495772, guid: b5bf7f269441f094d8cfddb1d651d730, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.5646382
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 495772, guid: b5bf7f269441f094d8cfddb1d651d730, type: 2}
       propertyPath: m_RootOrder
@@ -3524,23 +3515,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 452178, guid: e94fdf3e13308b04eb7d8a85894d602f, type: 2}
   m_PrefabInternal: {fileID: 2060527883}
---- !u!1 &2085433113 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 140992, guid: b938543d718bfb446b185c2b3ee6c82b, type: 2}
-  m_PrefabInternal: {fileID: 527537230}
---- !u!136 &2085433115
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2085433113}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 4
-  m_Height: 20
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2103849701
 Prefab:
   m_ObjectHideFlags: 0

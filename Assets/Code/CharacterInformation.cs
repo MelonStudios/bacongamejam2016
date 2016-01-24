@@ -4,6 +4,9 @@ public class CharacterInformation : MonoBehaviour
 {
     protected CharacterState state;
 
+    public GameObject[] FirePoints;
+    public float FireCooldown;
+
     public CharacterState CharacterState
     {
         get { return state; }

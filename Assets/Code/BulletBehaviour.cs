@@ -26,7 +26,7 @@ public class BulletBehaviour : MonoBehaviour
         else if (other.GetComponentInParent<PlayerInformation>() != null)
         {
             other.GetComponentInParent<PlayerInformation>().CharacterState = CharacterState.Dead;
-            Instantiate(Explosion, transform.position, Quaternion.LookRotation(Vector3.up));
+            Destroy(Instantiate(Explosion, transform.position, Quaternion.LookRotation(Vector3.up)), 2);
             DestroySelf();
         }
     }

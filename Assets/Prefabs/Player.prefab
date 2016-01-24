@@ -456,7 +456,7 @@ Rigidbody:
   m_GameObject: {fileID: 191574}
   serializedVersion: 2
   m_Mass: 0.0000001
-  m_Drag: 1
+  m_Drag: 0.8
   m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -554,8 +554,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c58b12cd86c8c4abdca4373f5e3cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirePoints:
+  - {fileID: 167268}
+  FireCooldown: 0
+  GodMode: 0
   Speed: 500
-  GodMode: 1
 --- !u!114 &11440644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b0ab81b57d5fa4ba2d3200b498c9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirePoint: {fileID: 167268}
   FireCooldown: 0
   BounceLimit: 5
 --- !u!114 &11465038
@@ -796,7 +798,7 @@ SpringJoint:
   m_ConnectedAnchor: {x: -1, y: 1.6500001, z: -1.5}
   serializedVersion: 2
   m_Spring: 5
-  m_Damper: 1
+  m_Damper: 1.2
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025

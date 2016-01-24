@@ -18,6 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &127902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 449368}
+  m_Layer: 11
+  m_Name: FirePointLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &130532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417192}
+  m_Layer: 11
+  m_Name: FirePointRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &147940
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +67,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &417192
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.07, y: 2.51, z: 2.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495772}
+  m_RootOrder: 2
+--- !u!4 &449368
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.06, y: 2.54, z: 2.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495772}
+  m_RootOrder: 1
 --- !u!4 &470236
 Transform:
   m_ObjectHideFlags: 1
@@ -55,11 +109,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147940}
-  m_LocalRotation: {x: 0, y: -0.82533854, z: 0, w: 0.5646382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.9, y: 3.4257812, z: -35.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470236}
+  - {fileID: 449368}
+  - {fileID: 417192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2337772
@@ -143,6 +199,7 @@ MonoBehaviour:
   DestroyedDroid: {fileID: 134210, guid: 75ea3b813a35b9d458a1e966d3c5cc58, type: 2}
   Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
   MaxDistanceTriggerNextPoint: 0.2
+  ConeOfVisionAngle: 20
 --- !u!114 &11491510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,6 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ae6be35591b4c48b3ed0179cfe0d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirePoints:
+  - {fileID: 127902}
+  - {fileID: 130532}
+  FireCooldown: 3
+  Bullet: {fileID: 171186, guid: 2835767407c768649a08f69c4c81634c, type: 2}
   SeekPointRotateSpeed: 2
   SeekPlayerRotateSpeed: 2
   WalkSpeed: 35
@@ -228,6 +290,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: WalkSpeed
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 171186, guid: 2835767407c768649a08f69c4c81634c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ConeOfVisionAngle
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

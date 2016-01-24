@@ -42,6 +42,7 @@ GameObject:
   - 4: {fileID: 463972}
   - 95: {fileID: 9591842}
   - 136: {fileID: 13665934}
+  - 136: {fileID: 13684902}
   m_Layer: 11
   m_Name: TurretBase
   m_TagString: Untagged
@@ -161,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.32051, y: 0, z: -45}
+  m_LocalPosition: {x: -4.3301277, y: 0, z: -52.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463972}
@@ -355,8 +356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4504d3354dd8394fa0a900e4299fee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleRotateSpeed: 0.35
-  SeekRotateSpeed: 0.8
+  FirePoints:
+  - {fileID: 145986}
+  FireCooldown: 2
+  Bullet: {fileID: 171186, guid: 2835767407c768649a08f69c4c81634c, type: 2}
+  IdleRotateSpeed: 10
+  SeekRotateSpeed: 2
 --- !u!114 &11496908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,12 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerGun: {fileID: 151516}
-  Bullet: {fileID: 171186, guid: 2835767407c768649a08f69c4c81634c, type: 2}
   DestroyedTurret: {fileID: 157394, guid: f6d9b507a95213b4ca69fea3e5f3223a, type: 2}
-  FirePoint: {fileID: 145986}
   Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
   TowerGunGib: {fileID: 104412, guid: 065d31b5c1c0f8c4398a49b1e89112b2, type: 2}
-  FireCooldown: 2
 --- !u!136 &13665934
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -385,6 +387,19 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 3
+  m_Height: 20
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13684902
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4
   m_Height: 20
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
