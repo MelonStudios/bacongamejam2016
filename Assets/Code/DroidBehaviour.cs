@@ -60,14 +60,13 @@ public class DroidBehaviour : MonoBehaviour
                 break;
             case DroidMode.SeekingPoint:
                 {
-                    Debug.Log(Vector3.Angle(transform.forward, path.NextPoint - transform.position));
                     if (PlayerIsVisible())
                     {
                         mode = DroidMode.SeekingPlayer;
                         StopAllCoroutines();
                         StartCoroutine(SeekPlayer());
                     }
-                    else if (Mathf.Approximately(Vector3.Angle(transform.forward, path.NextPoint - transform.position), 0))
+                    else if (Vector3.Angle(transform.forward, path.NextPoint - transform.position) < 0.05)
                     {
                         mode = DroidMode.Walking;
 
