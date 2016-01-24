@@ -4,6 +4,7 @@ using System.Collections;
 public class PostGameController : MonoBehaviour
 {
     public float SlowToStopTime;
+    public GameObject Explosion;
 
     bool doOnce;
 
@@ -19,6 +20,8 @@ public class PostGameController : MonoBehaviour
         if (doOnce)
         {
             doOnce = false;
+            Instantiate(Explosion, GameInformation.Instance.PlayerInformation.gameObject.transform.position, Quaternion.LookRotation(Vector3.up));
+            Destroy(GameInformation.Instance.PlayerInformation.gameObject);
             StartCoroutine(SlowGameToStop());
         }
     }
