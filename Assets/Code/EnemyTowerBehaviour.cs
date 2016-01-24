@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyInformation))]
 public class EnemyTowerBehaviour : MonoBehaviour
 {
     public GameObject TowerGun;
     public GameObject Bullet;
+    public GameObject DestroyedTurret;
     public GameObject FirePoint;
 
     public float IdleRotateSpeed;
@@ -14,6 +16,7 @@ public class EnemyTowerBehaviour : MonoBehaviour
 
     private GameObject player;
     private TurretMode mode;
+    private EnemyInformation enemyInformation;
 
     private float cooldown;
 
@@ -23,13 +26,27 @@ public class EnemyTowerBehaviour : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mode = TurretMode.Idle;
+        enemyInformation = GetComponent<EnemyInformation>();
+
+        enemyInformation.CharacterStateChanged += EnemyInformation_CharacterStateChanged;
 
         activeCoroutine = StartCoroutine(IdleRotate());
+    }
+
+    private void EnemyInformation_CharacterStateChanged(object sender, CharacterStateChangedEventArgs args)
+    {
+        if (args.NewState == CharacterState.Dead)
+        {
+            enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
+            Instantiate(DestroyedTurret, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
+        if (enemyInformation.CharacterState != CharacterState.Alive) return;
 
         cooldown += Time.deltaTime;
 

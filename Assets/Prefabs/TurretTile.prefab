@@ -104,6 +104,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455820}
   - 114: {fileID: 11461648}
+  - 114: {fileID: 11470156}
   - 114: {fileID: 11496908}
   m_Layer: 0
   m_Name: TurretTile
@@ -160,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3301277, y: 0, z: -52.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463972}
@@ -355,6 +356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03488e7991e85e4cae326670e615d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11470156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6732fac05baf5b4baafa6bcbfeb2ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11496908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerGun: {fileID: 151516}
   Bullet: {fileID: 171186, guid: 2835767407c768649a08f69c4c81634c, type: 2}
+  DestroyedTurret: {fileID: 157394, guid: f6d9b507a95213b4ca69fea3e5f3223a, type: 2}
   FirePoint: {fileID: 145986}
   IdleRotateSpeed: 0.35
   SeekRotateSpeed: 0.8
@@ -391,6 +404,18 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 127cb2edf5949d541ac52fec83a2f00c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DestroyedTurret
+      value: 
+      objectReference: {fileID: 157394, guid: f6d9b507a95213b4ca69fea3e5f3223a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169424}

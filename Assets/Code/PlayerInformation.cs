@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class PlayerInformation : MonoBehaviour
+public class PlayerInformation : Character
 {
     public float Speed;
-    public PlayerState PlayerState;
+    public bool GodMode;
 
     void Reset()
     {
@@ -12,12 +12,13 @@ public class PlayerInformation : MonoBehaviour
 
     void Awake()
     {
-        PlayerState = PlayerState.Alive;
+        CharacterState = CharacterState.Alive;
+        CharacterStateChanged += PlayerInformation_CharacterStateChanged;
     }
-}
 
-public enum PlayerState
-{
-    Alive,
-    Dead
+    private void PlayerInformation_CharacterStateChanged(object sender, CharacterStateChangedEventArgs args)
+    {
+        if (GodMode)
+            state = CharacterState.Alive;
+    }
 }

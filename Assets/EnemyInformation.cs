@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyInformation : MonoBehaviour
+public class EnemyInformation : Character
 {
-    public EnemyState EnemyState;
-}
-
-public enum EnemyState
-{
-    Alive,
-    Dead
+    void Awake()
+    {
+        CharacterState = CharacterState.Alive;
+    }
 }

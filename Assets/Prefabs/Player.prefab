@@ -15,7 +15,7 @@ GameObject:
   - 135: {fileID: 13573210}
   - 120: {fileID: 12039748}
   m_Layer: 9
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 500
-  PlayerState: 0
+  GodMode: 1
 --- !u!114 &11440644
 MonoBehaviour:
   m_ObjectHideFlags: 1

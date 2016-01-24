@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     void LateUpdate()
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
-        if (playerInformation.PlayerState != PlayerState.Alive) return;
+        if (playerInformation.CharacterState != CharacterState.Alive) return;
 
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");

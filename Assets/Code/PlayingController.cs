@@ -7,7 +7,7 @@ public class PlayingController : MonoBehaviour
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
 
-        if (GameInformation.Instance.PlayerInformation.PlayerState == PlayerState.Dead)
+        if (GameInformation.Instance.PlayerInformation.CharacterState == CharacterState.Dead)
         {
             GameInformation.Instance.GameState = GameState.PostGame;
         }

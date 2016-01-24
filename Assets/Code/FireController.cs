@@ -13,6 +13,7 @@ public class FireController : MonoBehaviour
 
     private float cooldown;
 
+    private GameObject firePoint;
     private PlayerInformation playerInformtion;
     private LineRenderer linerenderer;
     private float lineWidth = 0;
@@ -22,12 +23,14 @@ public class FireController : MonoBehaviour
         playerInformtion = GetComponent<PlayerInformation>();
         linerenderer = GetComponent<LineRenderer>();
         linerenderer.SetVertexCount(BounceLimit);
+
+        firePoint = FirePoint;
     }
 
     void Update()
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
-        if (playerInformtion.PlayerState != PlayerState.Alive) return;
+        if (playerInformtion.CharacterState != CharacterState.Alive) return;
 
         cooldown += Time.deltaTime;
 
@@ -35,12 +38,12 @@ public class FireController : MonoBehaviour
         {
             cooldown = 0;
 
-            CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
-            CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
-
             List<Tuple<Vector3, Vector3>> points = CalculateFirePoints();
             CalculateEnemyHits(points);
             AnimateShot(points);
+
+            CameraController.Instance.VisualEffectController.ChromaticAberration(40, 0.3f);
+            CameraController.Instance.VisualEffectController.BlurredCorners(1, 0.3f);
         }
        
         if (lineWidth > 0)
@@ -63,7 +66,7 @@ public class FireController : MonoBehaviour
     private List<Tuple<Vector3, Vector3>> CalculateFirePoints()
     {
         var firePoints = new List<Tuple<Vector3, Vector3>>();
-        firePoints.Add(new Tuple<Vector3, Vector3>(FirePoint.transform.position, transform.forward));
+        firePoints.Add(new Tuple<Vector3, Vector3>(firePoint.transform.position, transform.forward));
 
         firePoints = GetNextPointRecursivly(ref firePoints);
 
@@ -105,8 +108,17 @@ public class FireController : MonoBehaviour
     {
         for (int i = 0; i < points.Count; i++)
         {
-            if (points.Count > i + 1)
-                Debug.DrawLine(points[i].Item1, points[i + 1].Item1, Color.green);
+            if (points.Count > i + 1) // is there a to-from point for a line
+            {
+                float rayDistance = Vector3.Distance(points[i].Item1, points[i].Item2);
+
+                RaycastHit[] enemyHits = Physics.RaycastAll(points[i].Item1, points[i].Item2, rayDistance, 1 << 11); // Enemy layer 11
+
+                foreach (var enemy in enemyHits)
+                {
+                    enemy.collider.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
+                }
+            }
         }
     }
     private void AnimateShot(List<Tuple<Vector3, Vector3>> points)

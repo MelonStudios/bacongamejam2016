@@ -25,7 +25,7 @@ public class BulletBehaviour : MonoBehaviour
         }
         else if (other.GetComponentInParent<PlayerInformation>() != null)
         {
-            other.GetComponentInParent<PlayerInformation>().PlayerState = PlayerState.Dead;
+            other.GetComponentInParent<PlayerInformation>().CharacterState = CharacterState.Dead;
             DestroySelf();
         }
     }
