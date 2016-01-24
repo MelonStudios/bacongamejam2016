@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
     public static ScoreController Instance;
+    
+    private int shotCount = 0;
 
     void Awake()
     {
@@ -47,6 +49,7 @@ public class ScoreController : MonoBehaviour
     public Canvas TimeCanvas;
     public Text TimeRemaining;
     public Text CurrentScore;
+    public Text ShotsFired;
     public Text TenBonus;
     public Text ThirtyBonus;
     public Text FinalScore;
@@ -102,6 +105,7 @@ public class ScoreController : MonoBehaviour
         }
 
         tempScore += AddScore(SingleShot, "single shot");
+        shotCount++;
 
         Debug.LogWarning("Final score shot calc: " + tempScore);
         Score += tempScore;
@@ -135,8 +139,8 @@ public class ScoreController : MonoBehaviour
 
         TimeRemaining.text = timeRemining.ToString();
         CurrentScore.text = Score.ToString();
-        TenBonus.text = "x" + Mathf.FloorToInt(timeRemining / 10);
-        ThirtyBonus.text = "x" + Mathf.FloorToInt(timeRemining / 30);
+        TenBonus.text = "10s Bonus: x" + Mathf.FloorToInt(timeRemining / 10);
+        ThirtyBonus.text = "30s Bonus: x" + Mathf.FloorToInt(timeRemining / 30);
 
         TimeCanvas.enabled = true;
 
@@ -152,6 +156,8 @@ public class ScoreController : MonoBehaviour
 
         TimeRemaining.text = "0";
         CurrentScore.text = canvasEnd.ToString();
+
+        ShotsFired.text = shotCount.ToString();
 
         yield return new WaitForSeconds(0.6f);
         TenBonus.transform.parent.gameObject.SetActive(true);
