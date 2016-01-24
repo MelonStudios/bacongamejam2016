@@ -58,14 +58,14 @@ public class ScoreController : MonoBehaviour
             {
                 if (enemy.GetComponentInParent<TurretInformation>() != null)
                 {
-                    if (turretMulti == 0) multiType++;
+                    if (turretMulti == 1) multiType++;
 
                     tempScore += AddScore(TurretKill * turretMulti * reflections, turretMulti + "turret kill");
                     turretMulti++;
                 }
                 else if (enemy.GetComponentInParent<DroidInformation>() != null)
                 {
-                    if (droidMulti == 0) multiType++;
+                    if (droidMulti == 1) multiType++;
 
                     tempScore += AddScore(DroidKill * droidMulti * reflections, droidMulti + "droid kill");
                     droidMulti++;
@@ -87,12 +87,12 @@ public class ScoreController : MonoBehaviour
 
         if (multiType > 1)
         {
-            tempScore += AddScore(tempScore * multiType, "multi enemy type x" + multiType + " bonus");
+            tempScore = AddScore(tempScore * multiType, "multi enemy type x" + multiType + " bonus");
         }
 
         tempScore += AddScore(SingleShot, "single shot");
 
-        Debug.Log("Final score calc: " + tempScore);
+        Debug.LogWarning("Final score calc: " + tempScore);
         Score += tempScore;
     }
 

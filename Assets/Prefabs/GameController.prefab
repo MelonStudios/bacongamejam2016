@@ -94,14 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb93faa9af847b4dbf493acea029045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SingleShot: 0
+  SingleShot: -1
   Wall: 0
   Mirror: 10
   SingleSecond: 0
   TenSeconds: 0
   ThirtySeconds: 0
   TurretKill: 100
-  DroidKill: 50
+  DroidKill: 100
   TwoMirrorMulti: 2
   TenMulti: 1
   ThirtyMulti: 1
@@ -140,9 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee31058c19f5f97449f8a1585995ae76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlowToStopTime: 0.2
-  LowestTimeScale: 0.2
+  SlowToStopTime: 2
+  LowestTimeScale: 0.7
   Explosion: {fileID: 184512, guid: ec07e9889358e494ea55a262418b37a6, type: 2}
+  PlayerGib: {fileID: 144526, guid: acc6c46007cd34340b911802f2bdb4dd, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -7,7 +7,7 @@ public class PostGameController : MonoBehaviour
     public float LowestTimeScale;
 
     public GameObject Explosion;
-
+    public GameObject PlayerGib;
     bool doOnce;
 
     void Start()
@@ -25,6 +25,12 @@ public class PostGameController : MonoBehaviour
 
             doOnce = false;
             Instantiate(Explosion, GameInformation.Instance.PlayerInformation.gameObject.transform.position, Quaternion.LookRotation(Vector3.up));
+            for(int i = 0; i<3; i++)
+            { 
+                GameObject playerGib = Instantiate(PlayerGib, GameInformation.Instance.PlayerInformation.gameObject.transform.position + Vector3.up*(i), Quaternion.identity) as GameObject;
+                playerGib.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-400f, 400f), Random.Range(-400f, 400f), Random.Range(-400f, 400f)));
+                playerGib.GetComponent<Rigidbody>().AddTorque(Vector3.one *Random.Range(-500f,500f));
+            }
             Destroy(GameInformation.Instance.PlayerInformation.gameObject);
             StartCoroutine(SlowGameToStop());
         }

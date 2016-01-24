@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
 
     public VisualEffectController VisualEffectController { get; private set; }
 
+    public CameraDirection startCameraDirection;
+
     private CameraDirection _cameraDirection;
     private const float cameraPhysicalDistance = 30;
 
@@ -33,7 +35,7 @@ public class CameraController : MonoBehaviour
         TargetCameraDistance = 20;
         CameraDistanceLerpTime = 0.25f;
         MinCameraDistance = 8;
-        MaxCameraDistance = 30;
+        MaxCameraDistance = 40;
     }
 
     void Start()
@@ -41,7 +43,7 @@ public class CameraController : MonoBehaviour
         Instance = this;
         VisualEffectController = GetComponent<VisualEffectController>();
         player = GameObject.FindGameObjectWithTag("Player");
-        CameraDirection = CameraDirection.North;
+        CameraDirection = startCameraDirection;
         StartCoroutine(CameraDistanceController());
     }
 
