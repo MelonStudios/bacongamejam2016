@@ -8,6 +8,22 @@ public class GameInformation : MonoBehaviour
     public GameState GameState;
     public GameOverResult GameOverResult;
 
+    private LevelInformation levelInformation;
+
+    public LevelInformation LevelInformation
+    {
+        get
+        {
+            if (levelInformation == null)
+            {
+                levelInformation = FindObjectOfType<LevelInformation>();
+            }
+
+            return levelInformation;
+        }
+    }
+
+
     private PlayerInformation playerInformation;
 
     public PlayerInformation PlayerInformation

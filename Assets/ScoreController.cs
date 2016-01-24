@@ -36,10 +36,6 @@ public class ScoreController : MonoBehaviour
     // HexType Multiplers
     public float TwoMirrorMulti;
 
-    // Time Mutliplers
-    public float TenMulti;
-    public float ThirtyMulti;
-
     #endregion
 
     public static float Score { get; private set; }
@@ -92,7 +88,29 @@ public class ScoreController : MonoBehaviour
 
         tempScore += AddScore(SingleShot, "single shot");
 
-        Debug.LogWarning("Final score calc: " + tempScore);
+        Debug.LogWarning("Final score shot calc: " + tempScore);
+        Score += tempScore;
+
+        Debug.LogWarning("KILLING ALL ENEMIES IN SHOT");
+        foreach (var result in fireResults)
+        {
+            foreach (var enemy in result.HitEnemies)
+            {
+                enemy.GetComponentInParent<EnemyInformation>().CharacterState = CharacterState.Dead;
+            }
+        }
+    }
+
+    public void CalculateTimeRemainingScore()
+    {
+        float timeRemining = GameInformation.Instance.LevelInformation.TimeRemaining;
+        float tempScore = 0;
+
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining) * SingleSecond, "single seconds");
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining/10) * TenSeconds, "ten seconds");
+        tempScore += AddScore(Mathf.FloorToInt(timeRemining/30) * ThirtySeconds, "thirty seconds");
+
+        Debug.LogWarning("Final score time calc: " + tempScore);
         Score += tempScore;
     }
 

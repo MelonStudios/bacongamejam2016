@@ -97,14 +97,12 @@ MonoBehaviour:
   SingleShot: -1
   Wall: 0
   Mirror: 10
-  SingleSecond: 0
-  TenSeconds: 0
-  ThirtySeconds: 0
+  SingleSecond: 2
+  TenSeconds: 10
+  ThirtySeconds: 100
   TurretKill: 100
   DroidKill: 100
   TwoMirrorMulti: 2
-  TenMulti: 1
-  ThirtyMulti: 1
 --- !u!114 &11464196
 MonoBehaviour:
   m_ObjectHideFlags: 1
