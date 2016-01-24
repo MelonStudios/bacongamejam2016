@@ -559,7 +559,7 @@ MonoBehaviour:
   FireCooldown: 0
   GodMode: 0
   DebugFire: 0
-  RotationSpeed: 6
+  RotationSpeed: 12
   Speed: 500
 --- !u!114 &11440644
 MonoBehaviour:
