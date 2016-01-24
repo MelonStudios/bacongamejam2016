@@ -97,10 +97,10 @@ public class FireController : MonoBehaviour
         lineWidth = 1f;
         lineRenderer.SetWidth(lineWidth, lineWidth);
 
-        for (int i = 0; i < fireResults.Count; i += 2)
+        for (int i = 0; i < fireResults.Count; i++)
         {
-            lineRenderer.SetPosition(i, fireResults[i].Origin);
-            lineRenderer.SetPosition(i + 1, fireResults[i].Ending);
+            lineRenderer.SetPosition(i * 2, fireResults[i].Origin);
+            lineRenderer.SetPosition(i * 2 + 1, fireResults[i].Ending);
         }
 
         StartCoroutine(AnimateLineRendererOut());
