@@ -30,6 +30,8 @@ public class CameraController : MonoBehaviour
 
     private GameObject player;
 
+    private bool doOnce;
+
     void Reset()
     {
         TargetCameraDistance = 20;
@@ -44,14 +46,24 @@ public class CameraController : MonoBehaviour
         VisualEffectController = GetComponent<VisualEffectController>();
         player = GameObject.FindGameObjectWithTag("Player");
         CameraDirection = startCameraDirection;
-        StartCoroutine(CameraDistanceController());
+
+        doOnce = true;
     }
 
     void Update()
     {
+        if (GameInformation.Instance.GameState != GameState.Playing) return;
+        if (player.GetComponent<PlayerInformation>().CharacterState != CharacterState.Alive) return;
+
+        if (doOnce)
+        {
+            doOnce = false;
+            StartCoroutine(CameraDistanceController());
+        }
+
         if (player.gameObject != null)
         {
-            transform.position = (CameraDirectionToRayVector(CameraDirection) * cameraPhysicalDistance) + player.transform.position;
+            transform.position = CalculateTargetPosition();
             transform.LookAt(player.transform);
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -66,6 +78,11 @@ public class CameraController : MonoBehaviour
 
         DebugController.Instance.LogLine(string.Format("CAM DIRECTION: {0}", CameraDirection.ToString()));
         DebugController.Instance.LogLine(string.Format("CAM TARGET DISTANCE: {0}", TargetCameraDistance));
+    }
+
+    public Vector3 CalculateTargetPosition()
+    {
+        return (CameraDirectionToRayVector(CameraDirection) * cameraPhysicalDistance) + player.transform.position;
     }
 
     private CameraDirection SwitchCameraDirection(CameraDirection cameraDirection, bool clockwise)

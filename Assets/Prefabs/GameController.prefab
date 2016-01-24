@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee680ceefcc8c9548808b89d488f9c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraAnimationTime: 3
 --- !u!114 &11418968
 MonoBehaviour:
   m_ObjectHideFlags: 1
