@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyInformation : Character
+public class EnemyInformation : CharacterInformation
 {
-    void Awake()
-    {
-        CharacterState = CharacterState.Alive;
-    }
 }

@@ -13,6 +13,7 @@ class DroidPathEditor : Editor
         path = (DroidPath)target;
 
         labelStyle.fontStyle = FontStyle.Bold;
+        labelStyle.fontSize = 24;
         labelStyle.normal.textColor = Color.green;
     }
 

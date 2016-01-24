@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Character : MonoBehaviour
+public class CharacterInformation : MonoBehaviour
 {
     protected CharacterState state;
 
@@ -19,6 +19,11 @@ public class Character : MonoBehaviour
 
     public delegate void CharacterStateChangedEventHandler(object sender, CharacterStateChangedEventArgs args);
     public event CharacterStateChangedEventHandler CharacterStateChanged;
+
+    void Awake()
+    {
+        CharacterState = CharacterState.Alive;
+    }
 }
 
 public class CharacterStateChangedEventArgs

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyInformation))]
+[RequireComponent(typeof(TurretInformation))]
 public class TurretTileBehaviour : MonoBehaviour
 {
     public GameObject TowerGun;
@@ -11,14 +11,11 @@ public class TurretTileBehaviour : MonoBehaviour
     public GameObject Explosion;
     public GameObject TowerGunGib;
 
-    public float IdleRotateSpeed;
-    public float SeekRotateSpeed;
-
     public float FireCooldown;
 
     private GameObject player;
     private TurretMode mode;
-    private EnemyInformation enemyInformation;
+    private TurretInformation turretInformation;
 
     private float cooldown;
 
@@ -29,9 +26,9 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mode = TurretMode.Idle;
-        enemyInformation = GetComponent<EnemyInformation>();
+        turretInformation = GetComponent<TurretInformation>();
 
-        enemyInformation.CharacterStateChanged += EnemyInformation_CharacterStateChanged;
+        turretInformation.CharacterStateChanged += EnemyInformation_CharacterStateChanged;
 
         activeCoroutine = StartCoroutine(IdleRotate());
     }
@@ -40,7 +37,7 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         if (args.NewState == CharacterState.Dead)
         {
-            enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
+            turretInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedTurret, transform.position, transform.rotation);
             GameObject towergib = Instantiate(TowerGunGib, transform.position + Vector3.up * 4f, transform.rotation) as GameObject;
             towergib.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-200f,200f),Random.Range(-200f,200f),Random.Range(-200f,200f)));
@@ -54,7 +51,7 @@ public class TurretTileBehaviour : MonoBehaviour
     void Update()
     {
         if (GameInformation.Instance.GameState != GameState.Playing) return;
-        if (enemyInformation.CharacterState != CharacterState.Alive) return;
+        if (turretInformation.CharacterState != CharacterState.Alive) return;
 
         cooldown += Time.deltaTime;
 
@@ -129,7 +126,7 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         while (true)
         {
-            TowerGun.transform.Rotate(Vector3.up, IdleRotateSpeed * Time.deltaTime);
+            TowerGun.transform.Rotate(Vector3.up, turretInformation.IdleRotateSpeed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
     }
@@ -138,6 +135,7 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         while (true)
         {
+<<<<<<< HEAD
             if (player.gameObject != null)
             {
                 Vector3 targetDir = player.transform.position - TowerGun.transform.position;
@@ -152,6 +150,15 @@ public class TurretTileBehaviour : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
+=======
+            Vector3 targetDir = player.transform.position - TowerGun.transform.position;
+            float step = turretInformation.SeekRotateSpeed * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
+            newDir = new Vector3(newDir.x, 0, newDir.z);
+            TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
+
+            yield return new WaitForEndOfFrame();
+>>>>>>> origin/master
         }
     }
 
