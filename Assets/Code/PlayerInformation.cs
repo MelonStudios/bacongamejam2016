@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-public class PlayerInformation : Character
+public class PlayerInformation : CharacterInformation
 {
-    public float Speed;
     public bool GodMode;
+
+    public float Speed;
 
     void Reset()
     {
@@ -12,7 +13,6 @@ public class PlayerInformation : Character
 
     void Awake()
     {
-        CharacterState = CharacterState.Alive;
         CharacterStateChanged += PlayerInformation_CharacterStateChanged;
     }
 
