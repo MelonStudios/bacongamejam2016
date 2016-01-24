@@ -22,8 +22,6 @@ public class GameInformation : MonoBehaviour
             return levelInformation;
         }
     }
-
-
     private PlayerInformation playerInformation;
 
     public PlayerInformation PlayerInformation

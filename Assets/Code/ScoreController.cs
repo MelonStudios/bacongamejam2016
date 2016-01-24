@@ -117,7 +117,6 @@ public class ScoreController : MonoBehaviour
     {
         StartCoroutine(DisplayTimeBasedScore());
     }
-
     private float AddScore(float amount, string reason)
     {
         Debug.Log("SCORECALC: " + amount + " " + reason);
@@ -176,6 +175,16 @@ public class ScoreController : MonoBehaviour
         FinalScore.transform.parent.gameObject.SetActive(true);
 
         FinalScore.text = (Score += tempScore).ToString();
+    }
+
+    public void RetryButton()
+    {
+        LevelController.RestartLevel();
+    }
+
+    public void NextLevelButton(int levelNumber)
+    {
+        LevelController.LoadLevel(levelNumber);
     }
 }
 
