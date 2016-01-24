@@ -5,6 +5,7 @@ public class PlayerInformation : CharacterInformation
     public bool GodMode;
     public bool DebugFire;
 
+    public float RotationSpeed;
     public float Speed;
 
     void Reset()

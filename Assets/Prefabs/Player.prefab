@@ -207,7 +207,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106788}
-  m_LocalRotation: {x: 0, y: 0.99981743, z: 0, w: 0.019108944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.67, y: 3.4, z: -58.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114378}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.6}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 492954}
@@ -559,6 +559,7 @@ MonoBehaviour:
   FireCooldown: 0
   GodMode: 0
   DebugFire: 0
+  RotationSpeed: 6
   Speed: 500
 --- !u!114 &11440644
 MonoBehaviour:
@@ -779,7 +780,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.5
-  m_Center: {x: 0, y: 0, z: 0.7}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &13575426
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -801,7 +802,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.9999986, y: 1.6500001, z: -1.5000018}
+  m_ConnectedAnchor: {x: -1, y: 1.6500001, z: -1.5}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1.2
@@ -821,7 +822,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 5458614}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.0000013, y: 1.6500001, z: -1.5}
+  m_ConnectedAnchor: {x: 1, y: 1.6500001, z: -1.5}
   serializedVersion: 2
   m_Spring: 5
   m_Damper: 1
