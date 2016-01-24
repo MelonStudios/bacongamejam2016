@@ -127,6 +127,7 @@ public class FireController : MonoBehaviour
     }
     private void AnimateShot(List<Tuple<Vector3, Vector3>> points)
     {
+        linerenderer.SetVertexCount(points.Count);
         lineWidth = 1f;
         linerenderer.SetWidth(lineWidth, lineWidth);
         linerenderer.SetPositions(points.Select(p => p.Item1).ToArray());
