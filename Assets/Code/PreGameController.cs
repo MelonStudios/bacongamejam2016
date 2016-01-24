@@ -44,6 +44,11 @@ public class PreGameController : MonoBehaviour
         
         do
         {
+            if (Input.GetButton("Fire1"))
+            {
+                deltaTime = CameraAnimationTime;
+            }
+
             deltaTime += Time.deltaTime;
 
             cam.orthographicSize = Mathf.SmoothStep(originalSize, targetSize, MathUtility.PercentageBetween(deltaTime, 0, CameraAnimationTime));

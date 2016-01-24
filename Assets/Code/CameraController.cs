@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
 
     public CameraDirection startCameraDirection;
 
+    public float RotateAnimationTime;
+
     private CameraDirection _cameraDirection;
     private const float cameraPhysicalDistance = 30;
 
@@ -61,15 +63,24 @@ public class CameraController : MonoBehaviour
             StartCoroutine(CameraDistanceController());
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CameraDirection = SwitchCameraDirection(CameraDirection, true);
+            StartCoroutine(RotateCamera());
+            return;
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CameraDirection = SwitchCameraDirection(CameraDirection, false);
+            StartCoroutine(RotateCamera());
+            return;
+        }
+
         if (player.gameObject != null)
         {
             transform.position = CalculateTargetPosition();
             transform.LookAt(player.transform);
         }
-        if (Input.GetKeyDown(KeyCode.E))
-            CameraDirection = SwitchCameraDirection(CameraDirection, true);
-        else if (Input.GetKeyDown(KeyCode.Q))
-            CameraDirection = SwitchCameraDirection(CameraDirection, false);
 
         if (Input.mouseScrollDelta != Vector2.zero)
             TargetCameraDistance -= Convert.ToInt32(Input.mouseScrollDelta.y);
@@ -117,6 +128,43 @@ public class CameraController : MonoBehaviour
             default:
                 throw new System.Exception("fail");
         }
+    }
+    
+    IEnumerator RotateCamera()
+    {
+        Camera cam = Camera.main;
+        Vector3 originalPosition = cam.transform.position;
+        Vector3 targetPosition = cam.GetComponent<CameraController>().CalculateTargetPosition();
+        float originalSize = cam.orthographicSize;
+        float targetSize = cam.GetComponent<CameraController>().TargetCameraDistance;
+
+        Vector3 playerPosition = GameInformation.Instance.PlayerInformation.transform.position;
+        Quaternion originalRotation = cam.transform.rotation;
+
+        cam.transform.position = targetPosition;
+        cam.transform.LookAt(playerPosition);
+        Quaternion targetRotation = cam.transform.rotation;
+        cam.transform.position = originalPosition;
+        cam.transform.rotation = originalRotation;
+
+        GameInformation.Instance.GameState = GameState.Paused;
+        Time.timeScale = 0;
+
+        float deltaTime = 0;
+
+        do
+        {
+            deltaTime += Time.unscaledDeltaTime;
+
+            cam.orthographicSize = Mathf.SmoothStep(originalSize, targetSize, MathUtility.PercentageBetween(deltaTime, 0, RotateAnimationTime));
+            cam.transform.position = Vector3.Lerp(originalPosition, targetPosition, MathUtility.PercentageBetween(deltaTime, 0, RotateAnimationTime));
+            cam.transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, MathUtility.PercentageBetween(deltaTime, 0, RotateAnimationTime));
+
+            yield return new WaitForEndOfFrame();
+        } while (deltaTime <= RotateAnimationTime);
+
+        Time.timeScale = 1;
+        GameInformation.Instance.GameState = GameState.Playing;
     }
 
     IEnumerator CameraDistanceController()
