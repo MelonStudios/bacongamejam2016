@@ -106,7 +106,12 @@ public class TurretTileBehaviour : MonoBehaviour
         if (cooldown > turretInformation.FireCooldown)
         {
             cooldown = 0;
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(turretInformation.FireSounds[Random.Range(0, turretInformation.FireSounds.Length - 1)]);
+
+            foreach (var audioClip in turretInformation.FireSounds)
+            {
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(audioClip);
+            }
+
             Instantiate(turretInformation.Bullet, turretInformation.FirePoints[0].transform.position, TowerGun.transform.rotation);
         }
     }

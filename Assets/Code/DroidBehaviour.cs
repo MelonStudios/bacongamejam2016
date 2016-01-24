@@ -125,7 +125,12 @@ public class DroidBehaviour : MonoBehaviour
         if (cooldown > droidInformation.FireCooldown)
         {
             cooldown = 0;
-            Camera.main.GetComponent<AudioSource>().PlayOneShot(droidInformation.FireSounds[Random.Range(0, droidInformation.FireSounds.Length - 1)]);
+
+            foreach (var audioClip in droidInformation.FireSounds)
+            {
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(audioClip);
+            }
+            
             Instantiate(droidInformation.Bullet, droidInformation.FirePoints[Random.Range(0, droidInformation.FirePoints.Length - 1)].transform.position, transform.rotation);
         }
     }

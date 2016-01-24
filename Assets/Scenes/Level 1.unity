@@ -198,10 +198,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 169424, guid: b938543d718bfb446b185c2b3ee6c82b, type: 2}
-      propertyPath: m_Name
-      value: TurretTile
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b938543d718bfb446b185c2b3ee6c82b, type: 2}
   m_IsPrefabParent: 0

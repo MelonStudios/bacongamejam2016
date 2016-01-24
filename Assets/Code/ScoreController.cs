@@ -137,7 +137,7 @@ public class ScoreController : MonoBehaviour
         float canvasStart = Score;
         float canvasEnd = Score + Mathf.FloorToInt(timeRemining) * SingleSecond;
 
-        TimeRemaining.text = timeRemining.ToString();
+        TimeRemaining.text = Mathf.Floor(timeRemining).ToString();
         CurrentScore.text = Score.ToString();
         TenBonus.text = "10s Bonus: x" + Mathf.FloorToInt(timeRemining / 10);
         ThirtyBonus.text = "30s Bonus: x" + Mathf.FloorToInt(timeRemining / 30);
@@ -148,7 +148,7 @@ public class ScoreController : MonoBehaviour
 
         for (int i = 0; i < Mathf.FloorToInt(timeRemining) * 5; i++)
         {
-            TimeRemaining.text = Mathf.Lerp(timeRemining, 0, MathUtility.PercentageBetween(i, 0, Mathf.FloorToInt(timeRemining) * 5)).ToString();
+            TimeRemaining.text = Mathf.Floor(Mathf.Lerp(timeRemining, 0, MathUtility.PercentageBetween(i, 0, Mathf.FloorToInt(timeRemining) * 5))).ToString();
             CurrentScore.text = Mathf.Lerp(canvasStart, canvasEnd, MathUtility.PercentageBetween(i, 0, Mathf.FloorToInt(timeRemining) * 5)).ToString();
 
             yield return new WaitForEndOfFrame();
@@ -160,10 +160,10 @@ public class ScoreController : MonoBehaviour
         ShotsFired.text = shotCount.ToString();
 
         yield return new WaitForSeconds(0.6f);
-        TenBonus.transform.parent.gameObject.SetActive(true);
+        TenBonus.transform.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.6f);
-        ThirtyBonus.transform.parent.gameObject.SetActive(true);
+        ThirtyBonus.transform.gameObject.SetActive(true);
 
         // Actually calculate and add values
         float tempScore = 0;
