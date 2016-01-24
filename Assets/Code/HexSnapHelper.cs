@@ -26,8 +26,8 @@ public static class HexSnapHelper
         var hexPointHalf = (hexPoint / 2);
         var hexPointQuart = (hexPoint / 4);
 
-        int flatFloor = Mathf.FloorToInt(inputVector.x / hexFlat);
-        int pointFloor = Mathf.FloorToInt(inputVector.z / (hexPointHalf + hexPointQuart));
+        int flatFloor = Mathf.RoundToInt(inputVector.x / hexFlat);
+        int pointFloor = Mathf.RoundToInt(inputVector.z / (hexPointHalf + hexPointQuart));
 
         float x, y, z;
 
@@ -40,7 +40,7 @@ public static class HexSnapHelper
             x = (flatFloor * hexFlat * XOffSet) + hexFlatHalf;
         }
 
-        y = Mathf.Floor(inputVector.y) * YOffSet;
+        y = Mathf.Round(inputVector.y) * YOffSet;
         z = pointFloor * (hexPointHalf + hexPointQuart) * ZOffSet;
 
         return new Vector3(x, y, z);
