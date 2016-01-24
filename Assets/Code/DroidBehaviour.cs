@@ -5,6 +5,7 @@ using System.Collections;
 public class DroidBehaviour : MonoBehaviour
 {
     public GameObject DestroyedDroid;
+    public GameObject Explosion;
 
     private EnemyInformation enemyInformation;
 
@@ -21,6 +22,7 @@ public class DroidBehaviour : MonoBehaviour
         {
             enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedDroid, transform.position, transform.rotation);
+            Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

@@ -8,6 +8,7 @@ public class TurretTileBehaviour : MonoBehaviour
     public GameObject Bullet;
     public GameObject DestroyedTurret;
     public GameObject FirePoint;
+    public GameObject Explosion;
 
     public float IdleRotateSpeed;
     public float SeekRotateSpeed;
@@ -22,6 +23,7 @@ public class TurretTileBehaviour : MonoBehaviour
 
     private Coroutine activeCoroutine;
 
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,6 +41,7 @@ public class TurretTileBehaviour : MonoBehaviour
         {
             enemyInformation.CharacterStateChanged -= EnemyInformation_CharacterStateChanged;
             Instantiate(DestroyedTurret, transform.position, transform.rotation);
+            Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
