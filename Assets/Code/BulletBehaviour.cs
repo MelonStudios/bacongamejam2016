@@ -6,7 +6,6 @@ public class BulletBehaviour : MonoBehaviour
     public float LifeTime;
     public float BulletSpeed;
     public float RotateSpeed;
-    public GameObject Explosion;
     public GameObject BulletMesh;
 
     void Start()
@@ -26,7 +25,6 @@ public class BulletBehaviour : MonoBehaviour
         else if (other.GetComponentInParent<PlayerInformation>() != null)
         {
             other.GetComponentInParent<PlayerInformation>().CharacterState = CharacterState.Dead;
-            Instantiate(Explosion, transform.position, Quaternion.LookRotation(Vector3.up));
             DestroySelf();
         }
     }

@@ -94,10 +94,17 @@ public class TurretTileBehaviour : MonoBehaviour
 
     private bool CanSeePlayer()
     {
-        RaycastHit hit;
-        Physics.Raycast(TowerGun.transform.position, player.transform.position - TowerGun.transform.position, out hit);
-        
-        return hit.collider != null && hit.collider.tag == "Player";
+        if (player.gameObject)
+        {
+            RaycastHit hit;
+            Physics.Raycast(TowerGun.transform.position, player.transform.position - TowerGun.transform.position, out hit);
+
+            return hit.collider != null && hit.collider.tag == "Player";
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private bool CanFireOnPlayer()
@@ -131,13 +138,20 @@ public class TurretTileBehaviour : MonoBehaviour
     {
         while (true)
         {
-            Vector3 targetDir = player.transform.position - TowerGun.transform.position;
-            float step = SeekRotateSpeed * Time.deltaTime;
-            Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
-            newDir = new Vector3(newDir.x, 0, newDir.z);
-            TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
+            if (player.gameObject != null)
+            {
+                Vector3 targetDir = player.transform.position - TowerGun.transform.position;
+                float step = SeekRotateSpeed * Time.deltaTime;
+                Vector3 newDir = Vector3.RotateTowards(TowerGun.transform.forward, targetDir, step, 0.0F);
+                newDir = new Vector3(newDir.x, 0, newDir.z);
+                TowerGun.transform.rotation = Quaternion.LookRotation(newDir);
 
-            yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 
