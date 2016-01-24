@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
         TargetCameraDistance = 20;
         CameraDistanceLerpTime = 0.25f;
         MinCameraDistance = 8;
-        MaxCameraDistance = 30;
+        MaxCameraDistance = 40;
     }
 
     void Start()
