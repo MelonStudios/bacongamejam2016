@@ -182,9 +182,9 @@ public class ScoreController : MonoBehaviour
         LevelController.RestartLevel();
     }
 
-    public void NextLevelButton(int levelNumber)
+    public void NextLevelButton(string level)
     {
-        LevelController.LoadLevel(levelNumber);
+        LevelController.LoadLevel(level);
     }
 }
 

@@ -21,7 +21,18 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
+        GameMusicController[] musicObjects = FindObjectsOfType<GameMusicController>();
+        if (musicObjects.Length > 0)
+        {
+            Debug.Log("FOUND ONE");
+            for(int i = 0; i<musicObjects.Length; i++)
+            {
+                Destroy(musicObjects[i].gameObject);
+
+            }
+        }
         animating = false;
+
     }
 
     // Update is called once per frame

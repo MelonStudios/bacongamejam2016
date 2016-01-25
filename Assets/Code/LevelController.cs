@@ -15,9 +15,9 @@ public static class LevelController
         SceneManager.LoadScene("MainMenu");
     }
 
-    public static void LoadLevel(int levelNumber)
+    public static void LoadLevel(string level)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Level " + levelNumber);
+        SceneManager.LoadScene(level);
     }
 }
